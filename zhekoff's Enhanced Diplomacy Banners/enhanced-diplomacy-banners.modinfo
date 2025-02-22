@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="enhanced-diplomacy-banners" version="1.0.1"
+	xmlns="ModInfo">
+	<Properties>
+		<Name>Enhanced Diplomacy Banners (by zhekoff)</Name>
+		<Description>This mod permanently displays full diplomacy stats for all leaders and removes redundant UI elements, freeing up screen space for a cleaner and more compact experience.</Description>
+		<Authors>zhekoff</Authors>
+		<Package>Mod</Package>
+		<AffectsSavedGames>0</AffectsSavedGames>
+	</Properties>
+	<Dependencies>
+		<Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME"/>
+	</Dependencies>
+	<ActionCriteria>
+		<Criteria id="always">
+			<AlwaysMet></AlwaysMet>
+		</Criteria>
+	</ActionCriteria>
+	<ActionGroups>
+		<ActionGroup id="enhanced-diplomacy-banners" scope="game" criteria="always">
+			<Actions>
+				<UIScripts>
+					<Item>ui/diplo-ribbon/panel-diplo-ribbon-edp.js</Item>
+				</UIScripts>
+				<ImportFiles>
+					<Item>ui/diplo-ribbon/model-diplo-ribbon.js</Item>
+					<Item>ui/diplo-ribbon/panel-diplo-ribbon.js</Item>
+				</ImportFiles>
+				<UpdateText>
+                    <Item>text/en_us/Text.xml</Item>
+                </UpdateText>
+			</Actions>
+		</ActionGroup>
+	</ActionGroups>
+</Mod>
