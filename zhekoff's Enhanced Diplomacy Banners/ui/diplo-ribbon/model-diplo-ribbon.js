@@ -210,29 +210,7 @@ class DiploRibbonModel {
     }
     getRibbonDisplayTypesFromUserOptions() {
         this._ribbonDisplayTypes = [];
-        const showYieldsOption = UI.getOption(this.RIBBON_DISPLAY_OPTION_SET, this.RIBBON_DISPLAY_OPTION_TYPE, "RibbonShowYields");
-        if (showYieldsOption == null) {
-            //Default to show yields in diplo ribbon
-            UI.setOption(this.RIBBON_DISPLAY_OPTION_SET, this.RIBBON_DISPLAY_OPTION_TYPE, "RibbonShowYields", 1);
-            this._ribbonDisplayTypes.push(RibbonDisplayType.Yields);
-        }
-        else if (showYieldsOption == 1) {
-            this._ribbonDisplayTypes.push(RibbonDisplayType.Yields);
-        }
-        const showScoresOption = UI.getOption(this.RIBBON_DISPLAY_OPTION_SET, this.RIBBON_DISPLAY_OPTION_TYPE, "RibbonShowScores");
-        if (showScoresOption == null) {
-            UI.setOption(this.RIBBON_DISPLAY_OPTION_SET, this.RIBBON_DISPLAY_OPTION_TYPE, "RibbonShowScores", 1);
-        }
-        else if (showScoresOption == 1) {
-            this._ribbonDisplayTypes.push(RibbonDisplayType.Scores);
-        }
-        const showSizeOption = UI.getOption(this.RIBBON_DISPLAY_OPTION_SET, this.RIBBON_DISPLAY_OPTION_TYPE, "RibbonShowSize");
-        if (showSizeOption == null) {
-            UI.setOption(this.RIBBON_DISPLAY_OPTION_SET, this.RIBBON_DISPLAY_OPTION_TYPE, "RibbonShowSize", 1);
-        }
-        else if (showSizeOption == 1) {
-            this._ribbonDisplayTypes.push(RibbonDisplayType.Size);
-        }
+        this._ribbonDisplayTypes.push(RibbonDisplayType.Yields);
     }
     updateDiploStatementPlayerData() {
         if (InterfaceMode.isInInterfaceMode("INTERFACEMODE_DIPLOMACY_DIALOG") && !DiplomacyManager.currentDiplomacyDialogData) {
@@ -425,6 +403,15 @@ class DiploRibbonModel {
                 warningThreshold: settlementCap
             },
             {
+                type: RibbonYieldType.totalPopulation,
+                label: Locale.compose("LOC_YIELD_POPULATION_TOTAL"),
+                value: totalPopulation,
+                details: "",
+                img: this.getImg('YIELD_POPULATION', isLocal),
+                rawValue: totalPopulation,
+                warningThreshold: Infinity
+            },
+            {
                 type: RibbonYieldType.TotalGold,
                 label: Locale.compose("LOC_YIELD_GOLD_TOTAL"),
                 value: totalGold,
@@ -440,15 +427,6 @@ class DiploRibbonModel {
                 details: "",
                 img: this.getImg('YIELD_DIPLOMACY', isLocal),
                 rawValue: totalDiplomacy,
-                warningThreshold: Infinity
-            },
-            {
-                type: RibbonYieldType.totalPopulation,
-                label: Locale.compose("LOC_YIELD_POPULATION_TOTAL"),
-                value: totalPopulation,
-                details: "",
-                img: this.getImg('YIELD_POPULATION', isLocal),
-                rawValue: totalPopulation,
                 warningThreshold: Infinity
             }
         ];

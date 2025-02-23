@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Mod id="enhanced-diplomacy-banners" version="1.0.1"
+<Mod id="enhanced-diplomacy-banners" version="1.1.1"
 	xmlns="ModInfo">
 	<Properties>
-		<Name>Enhanced Diplomacy Banners (by zhekoff)</Name>
+		<Name>zhekoff's Enhanced Diplomacy Banners</Name>
 		<Description>This mod permanently displays full diplomacy stats for all leaders and removes redundant UI elements, freeing up screen space for a cleaner and more compact experience.</Description>
 		<Authors>zhekoff</Authors>
 		<Package>Mod</Package>
