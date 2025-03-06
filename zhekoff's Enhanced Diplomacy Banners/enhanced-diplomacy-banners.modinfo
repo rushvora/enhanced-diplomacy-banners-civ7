@@ -20,12 +20,9 @@
 		<ActionGroup id="enhanced-diplomacy-banners" scope="game" criteria="always">
 			<Actions>
 				<UIScripts>
-					<Item>ui/diplo-ribbon/panel-diplo-ribbon-edp.js</Item>
+					<Item>ui/diplo-ribbon/panel-diplo-ribbon-extension.js</Item>
+					<Item>ui/diplo-ribbon/model-diplo-ribbon-extension.js</Item>
 				</UIScripts>
-				<ImportFiles>
-					<Item>ui/diplo-ribbon/model-diplo-ribbon.js</Item>
-					<Item>ui/diplo-ribbon/panel-diplo-ribbon.js</Item>
-				</ImportFiles>
 				<UpdateText>
                     <Item>text/en_us/Text.xml</Item>
                     <Item locale="ko_KR">text/ko_KR/Text.xml</Item>

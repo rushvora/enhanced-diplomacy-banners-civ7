@@ -4,8 +4,8 @@ A Civilization 7 mod that provides a more compact and enhanced UI for diplomacy 
 
 * Compact UI - removes redundant elements that took up way too much space on the screen (ribbons, symbols and background containers).
 * Re-organized relationship icons - banners for leaders you are at war with will have a different background color).
-* New stat trackers - total gold treasury, total influence amount and total population.
-* Separation of per-turn trackers from the other stat trackers.
+* New stat trackers, that appear on hover - total gold treasury, total influence amount and total population.
+* Minor UI adjustments
 
 ![Enhanced Diplomacy Banners](img/enhanced_diplo_banners.png)
 
