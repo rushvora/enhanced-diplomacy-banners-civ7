@@ -16,9 +16,7 @@ A Civilization 7 mod that provides a more compact and enhanced UI for diplomacy 
 
 ## Compatibility
 
-The mod was made for 1.0.1 Patch 3.
-
-I have still not fully modularized this mod, so it will have conflicts with any mods that are modifying the **panel-diplo-ribbon.js** and **model-diplo-ribbon.js**.
+The mod is compatible with Patch 1.1.0. It is fully modularized, so it should not have any conflicts with other mods.
 
 ## Future Plans
 
