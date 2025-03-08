@@ -1,5 +1,5 @@
 /**
- * @file enhanced-diplo-ribbon-enhancer.js
+ * @file panel-diplo-ribbon-extension.js
  * @description Enhanced Diplomacy Ribbon mod for Civilization VII
  */
 
@@ -29,76 +29,120 @@ export class DiploRibbonEnhancer {
     addCustomStyles() {
         const style = document.createElement('style');
         style.textContent = `
-            /* Make relationship elements interactive */
-            .relationship-icon, 
-            .diplo-ribbon__relation-container,
-            .diplo-ribbon__war-support-count {
-                pointer-events: auto !important;
-                z-index: 20 !important;
-                position: relative !important;
-            }
-
-            /* Ensure the relationship container stays at the proper position */
-            .diplo-ribbon-outer:hover .diplo-ribbon__relation-container,
-            .diplo-ribbon-outer:hover .relationship-icon {
-                transition-duration: 0.3s;
-                transition-delay: 0s;
-            }
-
-            /* Position relationship icon at bottom border */
+            /* Styling the relationship icon */
             .relationship-icon {
-                margin-top: 7.5rem;
-                transition: margin-top 0.3s ease-in-out;
+                transform: scale(0.6);
+                margin-top: -0.7rem;
+                margin-right: 2.4rem;
+                z-index: 20;
+                filter: 
+                    drop-shadow(0.1111111111rem 0 0 #b6afa2) 
+                    drop-shadow(0 0.1111111111rem 0 #b6afa2) 
+                    drop-shadow(-0.1111111111rem 0 0 #b6afa2) 
+                    drop-shadow(0 -0.1111111111rem 0 #b6afa2)
+            }
+
+            /* War support styling with circle design */
+            .diplo-ribbon__war-support-count {
+                position: absolute !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+                border-radius: 50% !important; /* Make it circular */
+                color: #FFFFFF !important;
+                background-color: #616266 !important; /* Neutral gray by default */
+                border: 0.05rem solid #b6afa2;
+                font-weight: bold !important;
+                font-size: 0.7rem !important;
+                right: 1rem !important; /* Position on right side */
+                top: 2.8rem !important;
+                z-index: 20 !important;
+                box-shadow: 0 0 0.2rem rgba(0,0,0,0.5) !important;
+                margin: 0 !important; /* Reset margins */
+                padding: 0 !important; /* Reset padding */
+                transform: none !important; /* Remove any transforms */
+                font-weight: bold !important;
+            }
+
+            /* Positive war support (green circle) */
+            .diplo-ribbon__war-support-count.positive {
+                background-color: #579544 !important;
+                box-shadow: 0 0 0.2rem rgba(87, 149, 68, 0.5) !important;
+            }
+
+            /* Negative war support (red circle) */
+            .diplo-ribbon__war-support-count.negative {
+                background-color:rgb(180, 54, 83) !important;
+                box-shadow: 0 0 0.2rem rgba(148, 67, 86, 0.5) !important;
+            }
+    
+            /* Hide original hexagon elements */
+            .diplo-ribbon__portrait-hex-bg,
+            .diplo-ribbon__portrait-hex-bg-frame,
+            .diplo-ribbon__portrait-hex-bg-shadow {
+                display: none !important;
             }
             
-            .relationship-icon:hover {
-             }
-
-            .diplo-ribbon-outer:hover .diplo-ribbon__relation-container {
-                margin-top: 6.5rem;
+            /* Create circular portrait container */
+            .circular-portrait-container {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+                z-index: 2;
             }
-
-            .diplo-ribbon__war-support-count {
-                margin-top: 1.1rem !important;
-                border-radius: 0.75rem;
-                box-shadow: 0 0 1.3888888889rem rgba(26, 24, 24, 0.9);
+            
+            /* Circular background */
+            .circular-portrait-bg {
+                position: absolute;
+                width: 70%;
+                height: 70%;
+                border-radius: 50%;
+                background: #000000;
+                border: 0.1666666667rem solid #8C7F66;
+                box-shadow: 0 0 0.5555555556rem rgba(0, 0, 0, 0.5), 
+                            inset 0 0 0.2777777778rem rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Highlight on hover */
+            .diplo-ribbon__portrait:hover .circular-portrait-bg {
+                border-color:#c7ae80;
+            }
+            
+            /* Ensure portrait stays on top */
+            .diplo-ribbon__portrait-image {
+                z-index: 3;
                 position: relative;
-                top: -0.5rem;
-                transition: inherit;
-                z-index: 1;
             }
             
             /* Portrait styling */
             .diplo-ribbon__portrait {
-                --diplo-ribbon-scale: 0.8;
+                --diplo-ribbon-scale: 0.9;
                 z-index: 3;
             }
 
-            .diplo-ribbon__portrait.turn-active ~ .diplo-ribbon__relation-container,
-            .diplo-ribbon__portrait.turn-active ~ .relationship-icon,
-            .diplo-ribbon__portrait.turn-active .relationship-icon,
-            .diplo-ribbon__portrait.turn-active .diplo-ribbon__war-support-count {
-                top: 0.5555555556rem !important;
-            }
-
-            // To-do: Add hover effect for portrait
             .diplo-ribbon__portrait:hover {
-                --diplo-ribbon-scale: 0.8;
+                --diplo-ribbon-scale: 1;
             }
 
-            /* Gradient top border with player color */
+            /* Symbol background with subtle shadow */
             .diplo-background::before {
                 content: '';
                 position: absolute;
                 top: 0;
                 left: 0;
                 right: 0;
-                height: 0.5rem;
+                height: 1.2rem;
+                margin-top: 1.7rem;
                 background-color: var(--player-color-primary);
-                border-top-left-radius: 0.75rem;
-                border-top-right-radius: 0.75rem;
-                opacity: 0.5;
+                opacity: 0.9;
                 z-index: 1;
+                box-shadow: 0 0 0.1666666667rem var(--player-color-primary);
+                border-radius: 0.1111111111rem;
             }
 
             /* Always show yields */
@@ -107,18 +151,22 @@ export class DiploRibbonEnhancer {
             .diplo-ribbon-outer.show-on-hover .diplo-ribbon__bg-container {
                 display: flex !important;
             }
+            
+            .diplo-ribbon__symbol {
+                transform: scale(0.6) !important;
+                margin-top: 2.3rem;
+            }
 
             /* Hide unnecessary elements */
             .diplo-ribbon__front-banner,
             .diplo-ribbon__front-banner-shadow,
-            .diplo-ribbon__front-banner-overlay,
-            .diplo-ribbon__symbol {
+            .diplo-ribbon__front-banner-overlay {
                 display: none !important;
             }
 
             /* Yields position */
             .diplo-ribbon__yields {
-                margin-top: -2rem !important;
+                margin-top: -0.1rem !important;
                 transition: all 0.3s ease-in-out;
             }
 
@@ -138,7 +186,7 @@ export class DiploRibbonEnhancer {
             /* Background styling */
             .diplo-ribbon__bg,
             .diplo-background {
-                background-color: rgba(26, 24, 24, 0.9);
+                background-color:rgb(26, 24, 24);
                 border: 0.1111111111rem solid #8C7F66;
                 box-shadow: 0 0 1.3888888889rem rgba(26, 24, 24, 0.9);
                 border-radius: 0.75rem;
@@ -146,11 +194,12 @@ export class DiploRibbonEnhancer {
                 overflow: hidden;
             }
 
-            /* War state styling */
+            /* War state styling; disabled for now, will add this as an option in the future
             .diplo-background.player-at-war,
             .diplo-ribbon__bg.player-at-war {
                 background-color: rgba(73, 4, 4, 0.78);
             }
+            */
 
             /* Yield item styling */
             .yield-item {
@@ -306,9 +355,6 @@ export class DiploRibbonEnhancer {
             // Ensure diplo ribbons exist
             if (!this.component.diploRibbons?.length) return;
             
-            // Mark relation elements to prevent scaling
-            this.markRelationElements();
-            
             // Get player data based on interface mode
             const targetArray = this.getTargetPlayerArray();
             
@@ -321,22 +367,15 @@ export class DiploRibbonEnhancer {
                 
                 // Add civilization emblems
                 this.addCivEmblem(diploRibbon, index, targetArray);
+
+                // Add circular portrait frame
+                this.addCircularPortraitFrame(diploRibbon);
             });
         } catch (error) {
             console.error(`DiploRibbonEnhancer: Populate flags error - ${error.message}`);
         }
     }
-    
-    /**
-     * Mark relation elements to prevent unwanted scaling
-     * @private
-     */
-    markRelationElements() {
-        const relationElements = this.component.Root.querySelectorAll('.relationship-icon, .diplo-ribbon__relation-container');
-        relationElements.forEach(el => {
-            el.classList.add('relation-element-no-scale');
-        });
-    }
+
     
     /**
      * Determine the correct player data array based on current interface mode
@@ -431,6 +470,39 @@ export class DiploRibbonEnhancer {
         portrait.appendChild(emblem);
     }
     
+    /**
+     * Adds a circular frame around the leader portrait instead of the hexagon
+     * @param {HTMLElement} diploRibbon - Diplomatic ribbon element
+     * @private
+     */
+    addCircularPortraitFrame(diploRibbon) {
+        const portrait = diploRibbon.querySelector('.diplo-ribbon__portrait');
+        if (!portrait) return;
+        
+        // Remove any existing circular elements to prevent duplicates
+        const existingCircleContainer = portrait.querySelector('.circular-portrait-container');
+        if (existingCircleContainer) {
+            existingCircleContainer.remove();
+        }
+        
+        // Create the container
+        const circleContainer = document.createElement('div');
+        circleContainer.classList.add('circular-portrait-container');
+        
+        // Create the background circle
+        const circleBg = document.createElement('div');
+        circleBg.classList.add('circular-portrait-bg');
+        circleContainer.appendChild(circleBg);
+        
+        // Create the glow effect
+        const circleGlow = document.createElement('div');
+        circleGlow.classList.add('circular-portrait-glow');
+        circleContainer.appendChild(circleGlow);
+        
+        // Add to portrait
+        portrait.appendChild(circleContainer);
+    }
+
     // Lifecycle hook stubs (for potential future use)
     beforeAttach() {}
     afterAttach() {}

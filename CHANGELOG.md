@@ -1,5 +1,12 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.3.0] - 2025-03-08
+ - Make leaders portraits circular, as that fits more with the design of the mod
+ - Replace relationship icons with circular icons (mostly inspired by Civilization VI emoji's). They are also now part of the leader portrait.
+ - Re-designed war support count banner
+ - Restore proper hovering animations for leader portraits, and animations when their turn is active
+ - Add identity to the Civilization banners - we have a banner strip (with the color of the player) visible with the Civilization symbol inside.
+
 ## [1.2.0] - 2025-03-06
 - Make compatible with Patch 1.1.0 for Civ VII
 - Modularize the mod, so it does not make conflicts with any other mods that modify the same files

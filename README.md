@@ -2,9 +2,10 @@
 
 A Civilization 7 mod that provides a more compact and enhanced UI for diplomacy banners.
 
-* Compact UI - removes redundant elements that took up way too much space on the screen (ribbons, symbols and background containers).
-* Re-organized relationship icons - banners for leaders you are at war with will have a different background color).
-* New stat trackers, that appear on hover - total gold treasury, total influence amount and total population.
+* Re-designed diplomatic banners with a focus on achieving a more clean and compact UI
+* New relationship icons and war support elements
+* New stat trackers, that appear on hover - total gold treasury, total influence amount and total population
+* Banners are always on (solves a recurring issue with the "Always show yields" toggle)
 * Minor UI adjustments
 
 ![Enhanced Diplomacy Banners](img/enhanced_diplo_banners.png)
@@ -16,9 +17,9 @@ A Civilization 7 mod that provides a more compact and enhanced UI for diplomacy 
 
 ## Compatibility
 
-The mod is compatible with Patch 1.1.0. It is fully modularized, so it should not have any conflicts with other mods.
+The mod is compatible with Patch 1.1.0. It is fully modularized, so it should not have any conflicts with other mods (unless they also modify the same resources as me).
 
 ## Future Plans
 
 * More stat trackers, like Military Strength / Victory Scores.
-* Customizable stat trackers.
+* User settings

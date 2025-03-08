@@ -1,5 +1,5 @@
 /**
- * @file model-diplo-ribbon-extension.js
+ * @file extra-yields.js
  * @description Extension for diplomatic ribbon to enhance yield display in Civ 7
  */
 
