@@ -1,5 +1,9 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.4.0] - 2025-03-08
+ - Add persistent settings, than enable you to choose the relationship icon preset you prefer (credit to @leonardify and @Leugi for this)
+ - Add "Clasic" icon preset
+
 ## [1.3.1] - 2025-03-08
  - Fix bug that would break the attribute trees
  - Fix bug that would have the attribute icon shown behind the leader portrait

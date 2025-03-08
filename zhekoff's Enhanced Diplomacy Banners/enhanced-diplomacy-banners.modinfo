@@ -32,8 +32,11 @@
 					<Item>ui/diplo-ribbon/panel-diplo-ribbon-extension.js</Item>
 					<Item>ui/diplo-ribbon/relationship-icon-replacement.js</Item>
 					<Item>ui/diplo-ribbon/extra-yields.js</Item>
+					<Item>ui/settings/settings.js</Item>
+					<Item>ui/settings/settings-init.js</Item>
 				</UIScripts>
 				<UpdateText>
+					<Item>text/options/options.sql</Item>
                     <Item>text/en_us/Text.xml</Item>
                     <Item locale="ko_KR">text/ko_kr/Text.xml</Item>
                 </UpdateText>
