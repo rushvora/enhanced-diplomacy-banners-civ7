@@ -23,3 +23,5 @@ The mod is compatible with Patch 1.1.0. It is fully modularized, so it should no
 
 * More stat trackers, like Military Strength / Victory Scores.
 * User settings
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O41BNUB1)
