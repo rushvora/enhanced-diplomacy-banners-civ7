@@ -1,5 +1,9 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.3.1] - 2025-03-08
+ - Fix bug that would break the attribute trees
+ - Fix bug that would have the attribute icon shown behind the leader portrait
+
 ## [1.3.0] - 2025-03-08
  - Make leaders portraits circular, as that fits more with the design of the mod
  - Replace relationship icons with circular icons (mostly inspired by Civilization VI emoji's). They are also now part of the leader portrait.

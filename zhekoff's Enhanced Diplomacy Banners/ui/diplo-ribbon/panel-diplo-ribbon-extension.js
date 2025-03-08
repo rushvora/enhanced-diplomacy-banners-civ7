@@ -29,6 +29,11 @@ export class DiploRibbonEnhancer {
     addCustomStyles() {
         const style = document.createElement('style');
         style.textContent = `
+            /* Attribute button */
+            .diplo-ribbon__attribute-button {
+                z-index: 50 !important;
+            }
+                
             /* Styling the relationship icon */
             .relationship-icon {
                 transform: scale(0.6);
