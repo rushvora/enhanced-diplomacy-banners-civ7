@@ -20,20 +20,28 @@
 		<ActionGroup id="enhanced-diplomacy-banners" scope="game" criteria="always">
 			<Actions>
 				<ImportFiles>
-					<Item>icons/alliance.png</Item>
-					<Item>icons/friendly.png</Item>
-					<Item>icons/helpful.png</Item>
-					<Item>icons/hostile.png</Item>
-					<Item>icons/neutral.png</Item>
-					<Item>icons/unfriendly.png</Item>
-					<Item>icons/war.png</Item>
+					<Item>icons/classic/alliance.png</Item>
+					<Item>icons/classic/friendly.png</Item>
+					<Item>icons/classic/helpful.png</Item>
+					<Item>icons/classic/hostile.png</Item>
+					<Item>icons/classic/neutral.png</Item>
+					<Item>icons/classic/unfriendly.png</Item>
+					<Item>icons/classic/war.png</Item>
+					<Item>icons/emoji/alliance.png</Item>
+					<Item>icons/emoji/friendly.png</Item>
+					<Item>icons/emoji/helpful.png</Item>
+					<Item>icons/emoji/hostile.png</Item>
+					<Item>icons/emoji/neutral.png</Item>
+					<Item>icons/emoji/unfriendly.png</Item>
+					<Item>icons/emoji/war.png</Item>
 				</ImportFiles>
 				<UIScripts>
+					<Item>ui/settings/settings.js</Item>
+					<Item>ui/settings/settings-init.js</Item>
+					<Item>ui/settings/settings-shell-init.js</Item>
 					<Item>ui/diplo-ribbon/panel-diplo-ribbon-extension.js</Item>
 					<Item>ui/diplo-ribbon/relationship-icon-replacement.js</Item>
 					<Item>ui/diplo-ribbon/extra-yields.js</Item>
-					<Item>ui/settings/settings.js</Item>
-					<Item>ui/settings/settings-init.js</Item>
 				</UIScripts>
 				<UpdateText>
 					<Item>text/options/options.sql</Item>

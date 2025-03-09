@@ -1,31 +1,31 @@
 /**
- * @file relationship-icons.js
+ * @file relationship-icon-replacement.js
  * @description Replaces default relationship icons with custom icons based on selected style
  */
 
-import { Zhekoff_RelationshipIcons } from '../settings/settings.js';
+import { Zhekoff_RelationshipIcons } from 'fs://game/enhanced-diplomacy-banners/ui/settings/settings.js';
 
 // Icon paths organized by style
 const RELATIONSHIP_ICON_SETS = {
     // Style 1: Classic
     1: {
-        "PLAYER_RELATIONSHIP_ALLIANCE": "fs://game/enhanced-diplomacy-banners/icons/classic/alliance.png",
-        "PLAYER_RELATIONSHIP_FRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/classic/friendly.png",
-        "PLAYER_RELATIONSHIP_HELPFUL": "fs://game/enhanced-diplomacy-banners/icons/classic/helpful.png",
-        "PLAYER_RELATIONSHIP_HOSTILE": "fs://game/enhanced-diplomacy-banners/icons/classic/hostile.png",
-        "PLAYER_RELATIONSHIP_NEUTRAL": "fs://game/enhanced-diplomacy-banners/icons/classic/neutral.png",
-        "PLAYER_RELATIONSHIP_UNFRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/classic/unfriendly.png",
-        "PLAYER_RELATIONSHIP_AT_WAR": "fs://game/enhanced-diplomacy-banners/icons/classic/war.png"
+        "PLAYER_RELATIONSHIP_ALLIANCE": "fs://game/enhanced-diplomacy-banners/icons/classic/alliance_classic.png",
+        "PLAYER_RELATIONSHIP_FRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/classic/friendly_classic.png",
+        "PLAYER_RELATIONSHIP_HELPFUL": "fs://game/enhanced-diplomacy-banners/icons/classic/helpful_classic.png",
+        "PLAYER_RELATIONSHIP_HOSTILE": "fs://game/enhanced-diplomacy-banners/icons/classic/hostile_classic.png",
+        "PLAYER_RELATIONSHIP_NEUTRAL": "fs://game/enhanced-diplomacy-banners/icons/classic/neutral_classic.png",
+        "PLAYER_RELATIONSHIP_UNFRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/classic/unfriendly_classic.png",
+        "PLAYER_RELATIONSHIP_AT_WAR": "fs://game/enhanced-diplomacy-banners/icons/classic/war_classic.png"
     },
     // Style 2: Emoji
     2: {
-        "PLAYER_RELATIONSHIP_ALLIANCE": "fs://game/enhanced-diplomacy-banners/icons/emoji/alliance.png",
-        "PLAYER_RELATIONSHIP_FRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/emoji/friendly.png",
-        "PLAYER_RELATIONSHIP_HELPFUL": "fs://game/enhanced-diplomacy-banners/icons/emoji/helpful.png",
-        "PLAYER_RELATIONSHIP_HOSTILE": "fs://game/enhanced-diplomacy-banners/icons/emoji/hostile.png",
-        "PLAYER_RELATIONSHIP_NEUTRAL": "fs://game/enhanced-diplomacy-banners/icons/emoji/neutral.png",
-        "PLAYER_RELATIONSHIP_UNFRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/emoji/unfriendly.png",
-        "PLAYER_RELATIONSHIP_AT_WAR": "fs://game/enhanced-diplomacy-banners/icons/emoji/war.png"
+        "PLAYER_RELATIONSHIP_ALLIANCE": "fs://game/enhanced-diplomacy-banners/icons/emoji/alliance_emoji.png",
+        "PLAYER_RELATIONSHIP_FRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/emoji/friendly_emoji.png",
+        "PLAYER_RELATIONSHIP_HELPFUL": "fs://game/enhanced-diplomacy-banners/icons/emoji/helpful_emoji.png",
+        "PLAYER_RELATIONSHIP_HOSTILE": "fs://game/enhanced-diplomacy-banners/icons/emoji/hostile_emoji.png",
+        "PLAYER_RELATIONSHIP_NEUTRAL": "fs://game/enhanced-diplomacy-banners/icons/emoji/neutral_emoji.png",
+        "PLAYER_RELATIONSHIP_UNFRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/emoji/unfriendly_emoji.png",
+        "PLAYER_RELATIONSHIP_AT_WAR": "fs://game/enhanced-diplomacy-banners/icons/emoji/war_emoji.png"
     }
 };
 
@@ -63,8 +63,6 @@ class RelationshipIconReplacer {
             // Use .call to ensure the original method is called with its original context
             return this.originalGetIcon.call(UI, iconName, context);
         };
-
-        console.log("UI.getIcon successfully patched for relationship icons");
     }
 
     /**
@@ -73,7 +71,6 @@ class RelationshipIconReplacer {
     onSettingsChanged() {
         // We don't need to do anything here, as the getIcon method
         // already checks the settings on each call
-        console.log("Relationship icons updated due to settings change");
     }
 
     /**
@@ -94,7 +91,6 @@ engine.whenReady.then(() => {
     try {
         // Store the replacer globally so it can be accessed or cleaned up if needed
         window.relationshipIconReplacer = new RelationshipIconReplacer();
-        console.log("Relationship Icon Replacer: Initialized");
     } catch (error) {
         console.error("Relationship Icon Replacer: Initialization failed -", error);
     }

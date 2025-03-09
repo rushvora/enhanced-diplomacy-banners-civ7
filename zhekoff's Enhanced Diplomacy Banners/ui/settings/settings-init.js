@@ -1,11 +1,6 @@
-/**
- * @file settings-init.js
- * @description Initializes settings UI components for Enhanced Diplomacy Ribbon
- */
-
 import { Options, OptionType } from '/core/ui/options/model-options.js';
 import { CategoryType } from '/core/ui/options/options-helpers.js';
-import { Zhekoff_RelationshipIcons } from './settings.js';
+import { Zhekoff_RelationshipIcons } from 'fs://game/enhanced-diplomacy-banners/ui/settings/settings.js';
 import DiploRibbonData, { UpdateDiploRibbonEvent } from '/base-standard/ui/diplo-ribbon/model-diplo-ribbon.js';
 
 // We add a dependency on the Options module to ensure default options are loaded before we add our own
@@ -47,9 +42,4 @@ Options.addInitCallback(() => {
         description: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_DESCRIPTION",
         dropdownItems: iconStyleOptions
     });
-});
-
-// Force an update when settings are initialized
-engine.whenReady.then(() => {
-    window.dispatchEvent(new UpdateDiploRibbonEvent());
 });

@@ -1,16 +1,12 @@
 /**
- * @file settings.js
- * @description Settings management for Enhanced Diplomacy Ribbon mod
- */
-
-/**
- * ModSettingsManager - Handles persistent storage of mod settings
- * Based on implementation by Leonardfactory & Leugi
+ * Please, always use ModSettingsManager to save and read settings in your mod.
+ * Right now if you try to use **multiple** keys in localStorage, it will break reading
+ * from localStorage for **every mod**. This is a workaround to avoid this issue, while
+ * keeping a namespace to give each mod its own settings.
  */
 const ModSettingsManager = {
     save(key, data) {
         if (localStorage.length > 1) {
-            console.warn("[ModSettingsManager] erasing previous storage..", localStorage.length);
             localStorage.clear();
         }  
         const modSettings = JSON.parse(localStorage.getItem("modSettings") || '{}');
@@ -33,12 +29,9 @@ const ModSettingsManager = {
         }
         return null;
     }
-};
+}
 
-/**
- * Relationship Icon Settings
- * Controls which icon style is used for diplomatic relationships
- */
+// Relationship Icon Settings
 export const Zhekoff_RelationshipIcons = new class {
     _data = {
         StyleSetting: 1 // Default to Classic style
@@ -52,7 +45,6 @@ export const Zhekoff_RelationshipIcons = new class {
     }
 
     save() {
-        console.log("[Zhekoff_RelationshipIcons] saving..", JSON.stringify(this._data));
         ModSettingsManager.save("Zhekoff_RelationshipIcons", this._data);
     }
 
@@ -64,9 +56,4 @@ export const Zhekoff_RelationshipIcons = new class {
         this._data.StyleSetting = value;
         this.save();
     }
-};
-
-// Export the settings manager for use in other files
-export default {
-    Zhekoff_RelationshipIcons
-};
+}

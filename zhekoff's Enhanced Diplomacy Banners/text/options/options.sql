@@ -7,7 +7,7 @@ VALUES
     -- Option Group
     ("LOC_OPTIONS_GROUP_ZHEKOFF_ENHANCED_DIPLO_BANNERS",
     "en_US",
-    "zhekoff's Enhanced Diplomacy Banners"),
+    "Enhanced Diplomacy Banners"),
     
     -- Icon Style Option
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_NAME",
