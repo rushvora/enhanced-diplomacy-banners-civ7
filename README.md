@@ -3,7 +3,8 @@
 A Civilization 7 mod that provides a more compact and enhanced UI for diplomacy banners.
 
 * Re-designed diplomatic banners with a focus on achieving a more clean and compact UI
-* New relationship icons and war support elements (choose your own preset via the settings!)
+* Customization settings - choose your relationship icon preset, whether to show all additional yields or Civilization banner
+* New relationship icons and war support elements (classic and emoji icon presets currently available)
 * New stat trackers, that appear on hover - total gold treasury, total influence amount and total population
 * Banners are always on (solves a recurring issue with the "Always show yields" toggle)
 * Minor UI adjustments
@@ -22,6 +23,6 @@ The mod is compatible with Patch 1.1.0. It is fully modularized, so it should no
 ## Future Plans
 
 * More stat trackers, like Military Strength / Victory Scores.
-* User settings
+* More user settings
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O5O41BNUB1)

@@ -32,20 +32,22 @@ const ModSettingsManager = {
 }
 
 // Relationship Icon Settings
-export const Zhekoff_RelationshipIcons = new class {
+export const enhancedDiploBannersSettings = new class {
     _data = {
-        StyleSetting: 1 // Default to Classic style
+        StyleSetting: 1, // Default to Classic style
+        ShowCivSymbol: true, // Default to showing civilization symbols
+        AlwaysShowExtendedYields: false // Default to hiding extended yields until hover
     };
 
     constructor() {
-        const modSettings = ModSettingsManager.read("Zhekoff_RelationshipIcons");
+        const modSettings = ModSettingsManager.read("enhancedDiploBannersSettings");
         if (modSettings) {
             this._data = modSettings;
         }
     }
 
     save() {
-        ModSettingsManager.save("Zhekoff_RelationshipIcons", this._data);
+        ModSettingsManager.save("enhancedDiploBannersSettings", this._data);
     }
 
     get StyleSetting() {
@@ -54,6 +56,24 @@ export const Zhekoff_RelationshipIcons = new class {
 
     set StyleSetting(value) {
         this._data.StyleSetting = value;
+        this.save();
+    }
+
+    get ShowCivSymbol() {
+        return this._data.ShowCivSymbol;
+    }
+
+    set ShowCivSymbol(value) {
+        this._data.ShowCivSymbol = value;
+        this.save();
+    }
+
+    get AlwaysShowExtendedYields() {
+        return this._data.AlwaysShowExtendedYields;
+    }
+
+    set AlwaysShowExtendedYields(value) {
+        this._data.AlwaysShowExtendedYields = value;
         this.save();
     }
 }

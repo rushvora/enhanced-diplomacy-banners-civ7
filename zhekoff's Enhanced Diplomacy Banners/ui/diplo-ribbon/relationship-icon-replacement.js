@@ -3,7 +3,7 @@
  * @description Replaces default relationship icons with custom icons based on selected style
  */
 
-import { Zhekoff_RelationshipIcons } from 'fs://game/enhanced-diplomacy-banners/ui/settings/settings.js';
+import { enhancedDiploBannersSettings } from 'fs://game/enhanced-diplomacy-banners/ui/settings/settings.js';
 
 // Icon paths organized by style
 const RELATIONSHIP_ICON_SETS = {
@@ -46,7 +46,7 @@ class RelationshipIconReplacer {
             if (context === "PLAYER_RELATIONSHIP") {
                 try {
                     // Get current icon style from settings
-                    const iconStyle = Zhekoff_RelationshipIcons.StyleSetting;
+                    const iconStyle = enhancedDiploBannersSettings.StyleSetting;
                     
                     // Get the appropriate icon set based on style
                     const iconSet = RELATIONSHIP_ICON_SETS[iconStyle];

@@ -1,0 +1,15 @@
+<!-- AI Generated - Needs review by speaker -->
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+	<LocalizedText>
+		<Replace Tag="LOC_YIELD_GOLD_TOTAL" Language="zh_Hant_HK">
+			<Text>可用金幣總量。</Text>
+		</Replace>
+		<Replace Tag="LOC_YIELD_DIPLOMACY_TOTAL" Language="zh_Hant_HK">
+			<Text>可用影響力總量。</Text>
+		</Replace>
+		<Replace Tag="LOC_YIELD_POPULATION_TOTAL" Language="zh_Hant_HK">
+			<Text>總人口。</Text>
+		</Replace>
+	</LocalizedText>
+</Database>

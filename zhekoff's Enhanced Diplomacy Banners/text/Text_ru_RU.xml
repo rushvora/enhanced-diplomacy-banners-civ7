@@ -1,0 +1,14 @@
+<!-- Credit to Webrok -->
+<Database>
+    <LocalizedText>
+        <Row Tag="LOC_YIELD_GOLD_TOTAL" Language="ru_RU">
+            <Text>Общее количество золота.</Text>
+        </Row>
+        <Row Tag="LOC_YIELD_DIPLOMACY_TOTAL" Language="ru_RU">
+            <Text>Общее количество влияния.</Text>
+        </Row>
+        <Row Tag="LOC_YIELD_POPULATION_TOTAL" Language="ru_RU">
+            <Text>Общее количество населения.</Text>
+        </Row>
+    </LocalizedText>
+</Database>

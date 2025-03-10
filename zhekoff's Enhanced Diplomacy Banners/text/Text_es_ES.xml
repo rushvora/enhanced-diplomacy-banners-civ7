@@ -1,0 +1,15 @@
+<!-- AI Generated - Needs review by speaker -->
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+	<LocalizedText>
+		<Replace Tag="LOC_YIELD_GOLD_TOTAL" Language="es_ES">
+			<Text>Cantidad total de oro disponible.</Text>
+		</Replace>
+		<Replace Tag="LOC_YIELD_DIPLOMACY_TOTAL" Language="es_ES">
+			<Text>Cantidad total de influencia disponible.</Text>
+		</Replace>
+		<Replace Tag="LOC_YIELD_POPULATION_TOTAL" Language="es_ES">
+			<Text>Cantidad total de población.</Text>
+		</Replace>
+	</LocalizedText>
+</Database>

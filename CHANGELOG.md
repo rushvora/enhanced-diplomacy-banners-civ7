@@ -1,5 +1,24 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.5.0] - 2025-03-11
+ - Add new user customization options:
+    - You can now choose if you want to hide the banner with the Civilization symbol (by default it will be enabled).
+    - You can now choose if you want to always display all yields, without having to hover over to see the additional yields (by default the additional yields will still only show on hover)
+ - Fix "Sanctions" icon, it will be positioned on the portrait (thanks to @BrianKindly for the bug report)
+ - Update "unfriendly" classic icon to have a gradient background for consistency
+ - Add localization for:
+    - German
+    - Spanish
+    - French
+    - Italian
+    - Japanese
+    - Korean (Credit to @Hotsolidinfill)
+    - Polish
+    - Brazilian Portuguese (Credit to @LeonardoWelter)
+    - Russian (Credit to @Wobrok)
+    - Simplified Chinese
+    - Traditional Chinese
+
 ## [1.4.0] - 2025-03-08
  - Add persistent settings, than enable you to choose the relationship icon preset you prefer (credit to @leonardify and @Leugi for this)
  - Add "Clasic" icon preset
