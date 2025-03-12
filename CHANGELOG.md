@@ -1,5 +1,8 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.5.1] - 2025-03-12
+ - Fix leader portraits that do not appear in victory/age rankings
+
 ## [1.5.0] - 2025-03-11
  - Add new user customization options:
     - You can now choose if you want to hide the banner with the Civilization symbol (by default it will be enabled).

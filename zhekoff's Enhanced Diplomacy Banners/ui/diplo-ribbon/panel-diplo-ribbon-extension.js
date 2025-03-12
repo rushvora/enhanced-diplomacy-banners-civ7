@@ -46,10 +46,10 @@ export class DiploRibbonEnhancer {
                 // When extended yields should always be visible
                 extendedYieldsStyle.textContent = `
                     /* Always show extended yields */
-                    .diplo-ribbon__yields > *:nth-child(6),
-                    .diplo-ribbon__yields > *:nth-child(7),
-                    .diplo-ribbon__yields > *:nth-child(8),
-                    .diplo-ribbon__yields > *:nth-child(9) {
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(6),
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(7),
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(8),
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(9) {
                         display: flex !important;
                         opacity: 1 !important;
                         max-height: 2rem !important;
@@ -60,15 +60,15 @@ export class DiploRibbonEnhancer {
                     }
                     
                     /* Add separator after the 5th yield element */
-                    .diplo-ribbon__yields > *:nth-child(6) {
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(6) {
                         border-top: 0.0555555556rem solid #8C7F66 !important;
                         margin-top: 0.5rem !important;
                         padding-top: 0.5rem !important;
                     }
                     
                     /* Make background taller to accommodate extra items */
-                    .diplo-ribbon__bg,
-                    .diplo-background {
+                    .diplo-ribbon .diplo-ribbon__bg,
+                    .diplo-ribbon .diplo-background {
                         height: auto !important;
                         min-height: 12rem !important;
                     }
@@ -77,10 +77,10 @@ export class DiploRibbonEnhancer {
                 // Default behavior (show on hover)
                 extendedYieldsStyle.textContent = `
                     /* Hide extended yields by default */
-                    .diplo-ribbon__yields > *:nth-child(6),
-                    .diplo-ribbon__yields > *:nth-child(7),
-                    .diplo-ribbon__yields > *:nth-child(8),
-                    .diplo-ribbon__yields > *:nth-child(9) {
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(6),
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(7),
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(8),
+                    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(9) {
                         display: block !important;
                         opacity: 0 !important;
                         max-height: 0 !important;
@@ -94,10 +94,10 @@ export class DiploRibbonEnhancer {
                     }
 
                     /* Show extended yields on hover with animation */
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(6),
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(7),
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(8),
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(9) {
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(6),
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(7),
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(8),
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(9) {
                         display: flex !important;
                         opacity: 1 !important;
                         max-height: 2rem !important;
@@ -111,24 +111,24 @@ export class DiploRibbonEnhancer {
                     }
 
                     /* Stagger the animations for a nicer effect */
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(6) {
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(6) {
                         transition-delay: 0s !important;
                     }
 
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(7) {
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(7) {
                         transition-delay: 0s !important;
                     }
                     
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(8) {
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(8) {
                         transition-delay: 0.05s !important;
                     }
                     
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(9) {
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(9) {
                         transition-delay: 0.1s !important;
                     }
 
                     /* Add separator on hover after the 5th yield element */
-                    .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(6) {
+                    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(6) {
                         border-top: 0.0555555556rem solid #8C7F66 !important;
                         margin-top: 0.5rem !important;
                         padding-top: 0.5rem !important;
@@ -168,28 +168,28 @@ export class DiploRibbonEnhancer {
             if (enhancedDiploBannersSettings && enhancedDiploBannersSettings.ShowCivSymbol === false) {
                 // When symbols should be hidden
                 symbolStyle.textContent = `
-                    .diplo-ribbon__symbol {
+                    .diplo-ribbon .diplo-ribbon__symbol {
                         display: none !important;
                     }
                     
-                    .diplo-background::before {
+                    .diplo-ribbon .diplo-background::before {
                         display: none !important;
                     }
                     
-                    .diplo-ribbon__yields {
+                    .diplo-ribbon .diplo-ribbon__yields {
                         margin-top: -1.7rem !important;
                     }
                 `;
             } else {
                 // Default or when symbols should be shown
                 symbolStyle.textContent = `
-                    .diplo-ribbon__symbol {
+                    .diplo-ribbon .diplo-ribbon__symbol {
                         transform: scale(0.6) !important;
                         margin-top: 2.3rem;
                         display: block !important;
                     }
                     
-                    .diplo-background::before {
+                    .diplo-ribbon .diplo-background::before {
                         content: '';
                         position: absolute;
                         top: 0;
@@ -205,7 +205,7 @@ export class DiploRibbonEnhancer {
                         display: block !important;
                     }
                     
-                    .diplo-ribbon__yields {
+                    .diplo-ribbon .diplo-ribbon__yields {
                         margin-top: -0.1rem !important;
                     }
                 `;
@@ -233,13 +233,14 @@ export class DiploRibbonEnhancer {
             const mainStyle = document.createElement('style');
             mainStyle.id = 'diplo-ribbon-main-style';
             mainStyle.textContent = `
-                .diplo-ribbon__symbol {
+                /* Scope all styles to the diplomatic ribbon component */
+                .diplo-ribbon .diplo-ribbon__symbol {
                     transform: scale(0.6) !important;
                     margin-top: 2.3rem;
                     display: block !important;
                 }
                 
-                .diplo-background::before {
+                .diplo-ribbon .diplo-background::before {
                     content: '';
                     position: absolute;
                     top: 0;
@@ -255,12 +256,12 @@ export class DiploRibbonEnhancer {
                     display: block !important;
                 }
                 
-                .diplo-ribbon__yields {
+                .diplo-ribbon .diplo-ribbon__yields {
                     margin-top: -0.1rem !important;
                 }
 
                 /* Position envoy count on the portrait as well */
-                .diplo-ribbon__sanction-envoy-count {
+                .diplo-ribbon .diplo-ribbon__sanction-envoy-count {
                     z-index: 50 !important;
                     border: 0.1111111111rem solid #b6afa2;
                     border-radius: 50% !important;
@@ -280,12 +281,12 @@ export class DiploRibbonEnhancer {
                 }
 
                 /* Attribute button */
-                .diplo-ribbon__attribute-button {
+                .diplo-ribbon .diplo-ribbon__attribute-button {
                     z-index: 50 !important;
                 }
                     
                 /* Styling the relationship icon */
-                .relationship-icon {
+                .diplo-ribbon .relationship-icon {
                     transform: scale(0.65);
                     margin-top: -0.9rem;
                     margin-right: 2.6rem;
@@ -298,7 +299,7 @@ export class DiploRibbonEnhancer {
                 }
 
                 /* War support styling with circle design */
-                .diplo-ribbon__war-support-count {
+                .diplo-ribbon .diplo-ribbon__war-support-count {
                     position: absolute !important;
                     justify-content: center !important;
                     align-items: center !important;
@@ -321,26 +322,26 @@ export class DiploRibbonEnhancer {
                 }
 
                 /* Positive war support (green circle) */
-                .diplo-ribbon__war-support-count.positive {
+                .diplo-ribbon .diplo-ribbon__war-support-count.positive {
                     background-color: #579544 !important;
                     box-shadow: 0 0 0.2rem rgba(87, 149, 68, 0.5) !important;
                 }
 
                 /* Negative war support (red circle) */
-                .diplo-ribbon__war-support-count.negative {
+                .diplo-ribbon .diplo-ribbon__war-support-count.negative {
                     background-color:rgb(180, 54, 83) !important;
                     box-shadow: 0 0 0.2rem rgba(148, 67, 86, 0.5) !important;
                 }
         
-                /* Hide original hexagon elements */
-                .diplo-ribbon__portrait-hex-bg,
-                .diplo-ribbon__portrait-hex-bg-frame,
-                .diplo-ribbon__portrait-hex-bg-shadow {
+                /* Hide original hexagon elements ONLY in diplo ribbon */
+                .diplo-ribbon .diplo-ribbon__portrait-hex-bg,
+                .diplo-ribbon .diplo-ribbon__portrait-hex-bg-frame,
+                .diplo-ribbon .diplo-ribbon__portrait-hex-bg-shadow {
                     display: none !important;
                 }
                 
                 /* Create circular portrait container */
-                .circular-portrait-container {
+                .diplo-ribbon .circular-portrait-container {
                     position: absolute;
                     width: 100%;
                     height: 100%;
@@ -352,7 +353,7 @@ export class DiploRibbonEnhancer {
                 }
                 
                 /* Circular background */
-                .circular-portrait-bg {
+                .diplo-ribbon .circular-portrait-bg {
                     position: absolute;
                     width: 70%;
                     height: 70%;
@@ -364,43 +365,43 @@ export class DiploRibbonEnhancer {
                 }
                 
                 /* Highlight on hover */
-                .diplo-ribbon__portrait:hover .circular-portrait-bg {
+                .diplo-ribbon .diplo-ribbon__portrait:hover .circular-portrait-bg {
                     border-color:#c7ae80;
                 }
                 
                 /* Ensure portrait stays on top */
-                .diplo-ribbon__portrait-image {
+                .diplo-ribbon .diplo-ribbon__portrait-image {
                     z-index: 3;
                     position: relative;
                 }
                 
-                /* Portrait styling */
-                .diplo-ribbon__portrait {
+                /* Portrait styling - ONLY for diplo ribbon */
+                .diplo-ribbon .diplo-ribbon__portrait {
                     --diplo-ribbon-scale: 0.9;
                     z-index: 3;
                 }
 
-                .diplo-ribbon__portrait:hover {
+                .diplo-ribbon .diplo-ribbon__portrait:hover {
                     --diplo-ribbon-scale: 1;
                 }
 
                 /* Always show yields */
-                .diplo-ribbon-outer.show-on-hover .diplo-ribbon__yields,
-                .diplo-ribbon-outer.show-on-hover .diplo-ribbon__bottom-spacer,
-                .diplo-ribbon-outer.show-on-hover .diplo-ribbon__bg-container {
+                .diplo-ribbon .diplo-ribbon-outer.show-on-hover .diplo-ribbon__yields,
+                .diplo-ribbon .diplo-ribbon-outer.show-on-hover .diplo-ribbon__bottom-spacer,
+                .diplo-ribbon .diplo-ribbon-outer.show-on-hover .diplo-ribbon__bg-container {
                     display: flex !important;
                 }
 
                 /* Hide unnecessary elements */
-                .diplo-ribbon__front-banner,
-                .diplo-ribbon__front-banner-shadow,
-                .diplo-ribbon__front-banner-overlay {
+                .diplo-ribbon .diplo-ribbon__front-banner,
+                .diplo-ribbon .diplo-ribbon__front-banner-shadow,
+                .diplo-ribbon .diplo-ribbon__front-banner-overlay {
                     display: none !important;
                 }
 
-                /* Aggressive bottom spacer removal */
-                .diplo-ribbon__bottom-spacer,
-                div[class*="bottom-spacer"] {
+                /* Aggressive bottom spacer removal - only in diplo ribbon */
+                .diplo-ribbon .diplo-ribbon__bottom-spacer,
+                .diplo-ribbon div[class*="bottom-spacer"] {
                     display: none !important;
                     height: 0 !important;
                     max-height: 0 !important;
@@ -412,8 +413,8 @@ export class DiploRibbonEnhancer {
                 }
 
                 /* Background styling */
-                .diplo-ribbon__bg,
-                .diplo-background {
+                .diplo-ribbon .diplo-ribbon__bg,
+                .diplo-ribbon .diplo-background {
                     background-color:rgb(26, 24, 24);
                     border: 0.1111111111rem solid #8C7F66;
                     box-shadow: 0 0 1.3888888889rem rgba(26, 24, 24, 0.9);
@@ -423,25 +424,25 @@ export class DiploRibbonEnhancer {
                 }
 
                 /* Yield item styling */
-                .yield-item {
+                .diplo-ribbon .yield-item {
                     font-size: 0.8rem !important;
                     font-weight: bold;
                 }
 
                 /* Space between banners */
-                .diplo-ribbon-outer {
+                .diplo-ribbon .diplo-ribbon-outer {
                     margin: 0.1111111111rem;
                 }
 
                 /* Remove separator by default */
-                .diplo-ribbon__yields > *:nth-child(5) {
+                .diplo-ribbon .diplo-ribbon__yields > *:nth-child(5) {
                     border-top: 0 !important;
                     margin-top: 0 !important;
                     padding-top: 0 !important;
                     transition: all 0.3s ease-in-out !important;
                 }
 
-                .diplo-ribbon__yields > * {
+                .diplo-ribbon .diplo-ribbon__yields > * {
                     margin: 0 !important;
                     padding: 0 !important;
                 }
