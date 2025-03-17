@@ -17,7 +17,7 @@
 		</Criteria>
 	</ActionCriteria>
 	<ActionGroups>
-		<ActionGroup id="enhanced-diplomacy-banners" scope="game" criteria="always">
+		<ActionGroup id="enhanced-diplomacy-banners-game" scope="game" criteria="always">
 			<Actions>
 				<ImportFiles>
 					<!-- Classic Icons Preset -->
@@ -38,9 +38,13 @@
 					<Item>icons/emoji/war.png</Item>
 				</ImportFiles>
 				<UIScripts>
+					<!-- Settings -->
 					<Item>ui/settings/settings.js</Item>
 					<Item>ui/settings/settings-init.js</Item>
 					<Item>ui/settings/settings-shell-init.js</Item>
+					<!-- Extensions -->
+					<Item>ui/diplo-ribbon/constants.js</Item>
+					<Item>ui/diplo-ribbon/leader-expressions.js</Item>
 					<Item>ui/diplo-ribbon/panel-diplo-ribbon-extension.js</Item>
 					<Item>ui/diplo-ribbon/relationship-icon-replacement.js</Item>
 					<Item>ui/diplo-ribbon/extra-yields.js</Item>

@@ -59,4 +59,51 @@ VALUES
     
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ALWAYS_SHOW_EXTENDED_YIELDS_NO",
     "ko_KR",
-    "아니오");
+    "아니오"),
+
+    -- Background Style Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_NAME",
+    "ko_KR",
+    "배너 배경 스타일"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DESCRIPTION",
+    "ko_KR",
+    "외교 배너의 배경 스타일을 선택합니다."),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DEFAULT",
+    "ko_KR",
+    "기본"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ORIGINAL",
+    "ko_KR",
+    "원본"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_GOLDEN_HOUR",
+    "ko_KR",
+    "골드"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_FOREST_DEPTHS",
+    "ko_KR",
+    "포레스트"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ROYAL_TWILIGHT",
+    "ko_KR",
+    "팬텀"),
+
+    -- Checkbox for 'Hide Banners'
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_NAME",
+    "ko_KR",
+    "외교 배너 숨기기"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_DESCRIPTION",
+    "ko_KR",
+    "외교 배너를 숨깁니다 - 마우스를 올렸을 때만 표시됩니다."),
+
+    -- Checkbox for disabling leader expressions
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_NAME",
+    "ko_KR",
+    "지도자 표정 비활성화"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
+    "ko_KR",
+    "해당 지도자와의 관계에 따라 변하는 동적 초상화를 비활성화합니다.");

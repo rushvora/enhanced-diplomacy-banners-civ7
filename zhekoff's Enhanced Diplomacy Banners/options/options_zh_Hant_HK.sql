@@ -58,4 +58,51 @@ VALUES
     
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ALWAYS_SHOW_EXTENDED_YIELDS_NO",
     "zh_Hant_HK",
-    "否");
+    "否"),
+
+    -- Background Style Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_NAME",
+    "zh_Hant_HK",
+    "橫幅背景樣式"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DESCRIPTION",
+    "zh_Hant_HK",
+    "選擇外交橫幅的背景樣式。"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DEFAULT",
+    "zh_Hant_HK",
+    "預設"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ORIGINAL",
+    "zh_Hant_HK",
+    "原始"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_GOLDEN_HOUR",
+    "zh_Hant_HK",
+    "金色"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_FOREST_DEPTHS",
+    "zh_Hant_HK",
+    "森林"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ROYAL_TWILIGHT",
+    "zh_Hant_HK",
+    "幻影"),
+
+    -- Checkbox for 'Hide Banners'
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_NAME",
+    "zh_Hant_HK",
+    "隱藏外交橫幅"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_DESCRIPTION",
+    "zh_Hant_HK",
+    "隱藏外交橫幅 - 它們只會在滑鼠懸停時顯示。"),
+
+    -- Checkbox for disabling leader expressions
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_NAME",
+    "zh_Hant_HK",
+    "禁用領袖表情"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
+    "zh_Hant_HK",
+    "禁用根據您與該領袖的關係而變化的動態肖像。");

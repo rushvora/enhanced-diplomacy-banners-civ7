@@ -1,5 +1,10 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.6.0] - 2025-03-17
+ - Add option to hide banners, and show yields on hover - the default Civ VII behaviour (by default, it is not enabled)
+ - Add option to disable dynamic leader expressions (by default, it is not enabled)
+ - Add 5 background themes for the banners (Default, Original, Gold, Forest, Phantom) - you can choose your favorite in the settings
+
 ## [1.5.1] - 2025-03-12
  - Fix leader portraits that do not appear in victory/age rankings
 

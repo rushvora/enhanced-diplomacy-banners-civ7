@@ -58,4 +58,51 @@ VALUES
     
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ALWAYS_SHOW_EXTENDED_YIELDS_NO",
     "fr_FR",
-    "Non");
+    "Non"),
+
+    -- Background Style Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_NAME",
+    "fr_FR",
+    "Style d'Arrière-plan des Bannières"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DESCRIPTION",
+    "fr_FR",
+    "Choisissez le style d'arrière-plan pour les bannières diplomatiques."),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DEFAULT",
+    "fr_FR",
+    "Défaut"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ORIGINAL",
+    "fr_FR",
+    "Original"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_GOLDEN_HOUR",
+    "fr_FR",
+    "Or"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_FOREST_DEPTHS",
+    "fr_FR",
+    "Forêt"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ROYAL_TWILIGHT",
+    "fr_FR",
+    "Fantôme"),
+
+    -- Checkbox for 'Hide Banners'
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_NAME",
+    "fr_FR",
+    "Masquer les Bannières Diplomatiques"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_DESCRIPTION",
+    "fr_FR",
+    "Masque les bannières diplomatiques - elles n'apparaîtront qu'au survol de la souris."),
+
+    -- Checkbox for disabling leader expressions
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_NAME",
+    "fr_FR",
+    "Désactiver les Expressions des Dirigeants"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
+    "fr_FR",
+    "Désactive les portraits dynamiques qui changent en fonction de votre relation avec ce dirigeant.");

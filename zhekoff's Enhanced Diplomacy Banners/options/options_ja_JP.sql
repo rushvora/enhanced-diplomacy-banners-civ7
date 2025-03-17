@@ -58,4 +58,51 @@ VALUES
     
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ALWAYS_SHOW_EXTENDED_YIELDS_NO",
     "ja_JP",
-    "いいえ");
+    "いいえ"),
+
+    -- Background Style Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_NAME",
+    "ja_JP",
+    "バナー背景スタイル"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DESCRIPTION",
+    "ja_JP",
+    "外交バナーの背景スタイルを選択します。"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_DEFAULT",
+    "ja_JP",
+    "デフォルト"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ORIGINAL",
+    "ja_JP",
+    "オリジナル"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_GOLDEN_HOUR",
+    "ja_JP",
+    "ゴールド"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_FOREST_DEPTHS",
+    "ja_JP",
+    "フォレスト"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_BACKGROUND_STYLE_ROYAL_TWILIGHT",
+    "ja_JP",
+    "ファントム"),
+
+    -- Checkbox for 'Hide Banners'
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_NAME",
+    "ja_JP",
+    "外交バナーを隠す"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_HIDE_BANNERS_DESCRIPTION",
+    "ja_JP",
+    "外交バナーを隠します - マウスオーバー時のみ表示されます。"),
+
+    -- Checkbox for disabling leader expressions
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_NAME",
+    "ja_JP",
+    "指導者の表情を無効化"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
+    "ja_JP",
+    "その指導者との関係に基づいて変化する動的な肖像画を無効にします。");

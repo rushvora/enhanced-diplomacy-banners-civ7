@@ -1,15 +1,18 @@
 # zhekoff's Enhanced Diplomacy Banners
 
-A Civilization 7 mod that provides a more compact and enhanced UI for diplomacy banners.
+**zhekoff's Enhanced Diplomacy Banners** is a UI improvement mod that transforms the diplomatic ribbon in Civilization VII. This mod provides a cleaner, more informative, and visually customizable interface for the diplomatic ribbons without affecting gameplay mechanics.
 
-* Re-designed diplomatic banners with a focus on achieving a more clean and compact UI
-* Customization settings - choose your relationship icon preset, whether to show all additional yields or Civilization banner
-* New relationship icons and war support elements (classic and emoji icon presets currently available)
-* New stat trackers, that appear on hover - total gold treasury, total influence amount and total population
-* Banners are always on (solves a recurring issue with the "Always show yields" toggle)
-* Minor UI adjustments
+* **Sleek, Compact Design:** Completely redesigned diplomatic banners with a cleaner, more space-efficient layout
+* **More Statistics:** View additional metrics including total gold reserves, total influence points, and population counts (configurable to show permanently or on hover)
+* **Extensive Customization:**
+    * Two relationship icon presets (Classic and Emoji)
+    * Five background themes for different visual styles
+    * Toggle civilization emblems for additional identity
+    * Option to show/hide extended yields until hover
+* **Flexible Display Modes:** Choose between always-visible banners or opt for the default Civ VII behavior (hidden until hover)
+* **Leader Expression Control:** Option to disable dynamic leader expressions
 
-![Enhanced Diplomacy Banners](img/enhanced_diplo_banners.png)
+![](img/all-yields-enabled.png)
 
 ## Installation
 
