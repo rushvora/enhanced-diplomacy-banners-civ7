@@ -16,7 +16,7 @@ DiploRibbonData.createPlayerData = function(player, playerDiplomacy, isKnownPlay
     const disableExpressions = enhancedDiploBannersSettings && enhancedDiploBannersSettings.DisableLeaderExpressions === true;
 
     if (disableExpressions) {
-        dataObj.portraitContext = "LEADER_HAPPY";
+        dataObj.portraitContext = "";
     }
 
     return dataObj;

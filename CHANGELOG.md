@@ -1,5 +1,9 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.6.1] - 2025-03-19
+ - Move the settings to the dedicated 'Mods' tab
+ - Fix issue with leader expressions - disabling them would show the neutral expression, and not their 'happy' expression
+
 ## [1.6.0] - 2025-03-17
  - Add option to hide banners, and show yields on hover - the default Civ VII behaviour (by default, it is not enabled)
  - Add option to disable dynamic leader expressions (by default, it is not enabled)

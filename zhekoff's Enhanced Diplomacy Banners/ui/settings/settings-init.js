@@ -1,10 +1,16 @@
 import { Options, OptionType } from '/core/ui/options/model-options.js';
-import { CategoryType } from '/core/ui/options/options-helpers.js';
+import { CategoryData, CategoryType } from '/core/ui/options/options-helpers.js';
 import { enhancedDiploBannersSettings } from 'fs://game/enhanced-diplomacy-banners/ui/settings/settings.js';
-import DiploRibbonData, { UpdateDiploRibbonEvent } from '/base-standard/ui/diplo-ribbon/model-diplo-ribbon.js';
+import { UpdateDiploRibbonEvent } from '/base-standard/ui/diplo-ribbon/model-diplo-ribbon.js';
 
 // We add a dependency on the Options module to ensure default options are loaded before we add our own
 import '/core/ui/options/options.js';
+
+CategoryType["Mods"] = "mods";
+CategoryData[CategoryType.Mods] = {
+    title: "LOC_UI_CONTENT_MGR_SUBTITLE",
+    description: "LOC_UI_CONTENT_MGR_SUBTITLE_DESCRIPTION",
+};
 
 // Register options with the game's options system
 Options.addInitCallback(() => {
@@ -32,7 +38,7 @@ Options.addInitCallback(() => {
     ];
 
     Options.addOption({ 
-        category: CategoryType.System,
+        category: CategoryType.Mods,
         group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
         type: OptionType.Dropdown,
         id: "zhekoff-diplo-icon-style",
@@ -70,7 +76,7 @@ Options.addInitCallback(() => {
     ];
 
     Options.addOption({ 
-        category: CategoryType.System,
+        category: CategoryType.Mods,
         group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
         type: OptionType.Dropdown,
         id: "zhekoff-diplo-background-style",
@@ -93,7 +99,7 @@ Options.addInitCallback(() => {
     };
 
     Options.addOption({ 
-        category: CategoryType.System,
+        category: CategoryType.Mods,
         group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
         type: OptionType.Checkbox,
         id: "zhekoff-diplo-show-civ-symbol",
@@ -115,7 +121,7 @@ Options.addInitCallback(() => {
     };
 
     Options.addOption({ 
-        category: CategoryType.System,
+        category: CategoryType.Mods,
         group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
         type: OptionType.Checkbox,
         id: "zhekoff-diplo-always-show-extended-yields",
@@ -137,7 +143,7 @@ Options.addInitCallback(() => {
     };
 
     Options.addOption({ 
-        category: CategoryType.System,
+        category: CategoryType.Mods,
         group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
         type: OptionType.Checkbox,
         id: "zhekoff-diplo-disable-leaders-expressions",
@@ -159,7 +165,7 @@ Options.addInitCallback(() => {
     };
 
     Options.addOption({ 
-        category: CategoryType.System,
+        category: CategoryType.Mods,
         group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
         type: OptionType.Checkbox,
         id: "zhekoff-diplo-hide-banners",
