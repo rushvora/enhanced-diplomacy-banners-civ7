@@ -11,5 +11,8 @@
 		<Replace Tag="LOC_YIELD_POPULATION_TOTAL" Language="ko_KR">
 			<Text>인구 합계</Text>
 		</Replace>
+		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="ko_KR">
+			<Text>군사력</Text>
+		</Replace>
 	</LocalizedText>
 </Database>

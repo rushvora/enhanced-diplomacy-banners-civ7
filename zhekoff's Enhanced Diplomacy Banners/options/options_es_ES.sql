@@ -105,4 +105,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "es_ES",
-    "Desactiva los retratos dinámicos que cambian según tu relación con ese líder.");
+    "Desactiva los retratos dinámicos que cambian según tu relación con ese líder."),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "es_ES",
+    "Tamaño de la Cinta"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "es_ES",
+    "Ajusta el tamaño de los banners diplomáticos para una visualización más compacta."),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "es_ES",
+    "Normal"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "es_ES",
+    "Compacto"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "es_ES",
+    "Ultra Compacto"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "es_ES",
+    "Mostrar Todos los Rendimientos al Pasar sobre el Jugador Local"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "es_ES",
+    "Al pasar el cursor sobre tu propio retrato de líder, también se muestran los rendimientos detallados de todos los demás líderes.");

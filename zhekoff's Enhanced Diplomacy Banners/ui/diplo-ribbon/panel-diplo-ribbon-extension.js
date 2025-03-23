@@ -5,6 +5,7 @@
 
 import { InterfaceMode } from '/core/ui/interface-modes/interface-modes.js';
 import DiploRibbonData from '/base-standard/ui/diplo-ribbon/model-diplo-ribbon.js';
+import { Audio } from '/core/ui/audio-base/audio-support.js';
 import { enhancedDiploBannersSettings } from 'fs://game/enhanced-diplomacy-banners/ui/settings/settings.js';
 import { 
     MAIN_STYLES,
@@ -14,8 +15,13 @@ import {
     SHOW_EXTENDED_YIELDS_ON_HOVER_STYLES,
     BACKGROUND_STYLES,
     SHOW_BANNERS_STYLES,
-    HIDE_BANNERS_STYLES
+    HIDE_BANNERS_STYLES,
+    HOVER_ALL_STYLES
 } from './constants.js';
+import {
+    COMPACT_MODE_STYLES,
+    SCALE_FACTORS
+} from './compact-mode.js';
 
 export class DiploRibbonEnhancer {
     constructor(component) {
@@ -28,18 +34,126 @@ export class DiploRibbonEnhancer {
         // Bind and override component methods
         component.onInitialize = this.onInitialize.bind(this);
         component.populateFlags = this.populateFlags.bind(this);
+        component.displayRibbonDetails = this.displayRibbonDetails.bind(this);
+        component.hideRibbonDetails = this.hideRibbonDetails.bind(this);
+
+        // Track initial banner visibility state
+        this.initialBannersHidden = enhancedDiploBannersSettings?.HideBanners === true;
 
         // Add custom styles
         this.addCustomStyles();
 
         // Listen for settings changes
         this.settingsChangedListener = () => {
+            // Check if banner visibility has changed since initialization
+            const bannersHiddenNow = enhancedDiploBannersSettings?.HideBanners === true;
+            const visibilityChanged = this.initialBannersHidden !== bannersHiddenNow;
+            
             // Update the CSS styles to reflect current settings
             this.applyAllStyles();
+            
+            // Important: Force refresh hover-all status by removing all hover-all classes 
+            // when settings change, especially when toggling hidden banners
+            const civFlagContainers = document.querySelectorAll(".diplo-ribbon-outer");
+            for (const civFlagContainer of civFlagContainers) {
+                civFlagContainer.classList.remove("hover-all");
+                civFlagContainer.classList.remove("forced-show");
+                
+                // If banner visibility has changed, force a full repopulation
+                if (visibilityChanged) {
+                    civFlagContainer.classList.toggle('hidden-banners-mode', bannersHiddenNow);
+                }
+            }
+            
+            // If banner visibility changed, force repopulate to ensure symbols are correctly shown
+            if (visibilityChanged) {
+                this.component.populateFlags();
+            }
         };
 
         // Listen for settings changes
         window.addEventListener('update-diplo-ribbon', this.settingsChangedListener);
+    }
+
+    /**
+     * Method called when hovering over a diplomatic ribbon
+     * @param {HTMLElement} target - The element being hovered
+     */
+    displayRibbonDetails(target) {
+        if (InterfaceMode.isInInterfaceMode("INTERFACEMODE_DIPLOMACY_HUB") || InterfaceMode.isInInterfaceMode("INTERFACEMODE_DIPLOMACY_DIALOG")) {
+            return;
+        }
+        
+        const targetID = target.getAttribute("data-player-id");
+        if (targetID == null) {
+            console.error("panel-diplo-ribbon: Attempting to hover a leader portrait without a 'data-player-id' attribute!");
+            return;
+        }
+        
+        const targetIDInt = Number.parseInt(targetID);
+        if (isNaN(targetIDInt) || targetIDInt == PlayerIds.NO_PLAYER) {
+            console.error("panel-diplo-ribbon: invalid playerID parsed from data-player-id attribute (" + targetID + ") during hover callback.");
+            return;
+        }
+
+        // Check if this is the local player portrait and we have the setting enabled
+        if (targetIDInt == GameContext.localPlayerID && enhancedDiploBannersSettings?.ShowAllYieldsOnLocalHover) {
+            // Show all yields by adding "hover-all" class to all diplo ribbons
+            const civFlagContainers = document.querySelectorAll(".diplo-ribbon-outer");
+            for (const civFlagContainer of civFlagContainers) {
+                civFlagContainer.classList.add("hover-all");
+                
+                // Add this class to ensure proper display in hidden banners mode
+                if (enhancedDiploBannersSettings?.HideBanners) {
+                    civFlagContainer.classList.add("forced-show");
+                }
+            }
+        }
+        
+        // Keep existing code for the Audio handling
+        if (targetIDInt != GameContext.localPlayerID) {
+            Audio.playSound("data-audio-focus", "audio-panel-diplo-ribbon");
+            return;
+        }
+        
+        if (!target.parentElement?.parentElement) {
+            console.error("panel-diplo-ribbon: No valid parent element while attempting to hover a portrait!");
+            return;
+        }
+        
+        Audio.playSound("data-audio-focus", "audio-panel-diplo-ribbon");
+    }
+
+    /**
+     * Method called when mouse leaves a diplomatic ribbon
+     * @param {HTMLElement} target - The element being un-hovered
+     */
+    hideRibbonDetails(target) {
+        if (InterfaceMode.isInInterfaceMode("INTERFACEMODE_DIPLOMACY_HUB") || InterfaceMode.isInInterfaceMode("INTERFACEMODE_DIPLOMACY_DIALOG")) {
+            return;
+        }
+        
+        const targetID = target.getAttribute("data-player-id");
+        if (targetID == null) {
+            console.error("panel-diplo-ribbon: Attempting to un-hover a leader portrait without a 'data-player-id' attribute!");
+            return;
+        }
+        
+        const targetIDInt = Number.parseInt(targetID);
+        if (isNaN(targetIDInt) || targetIDInt == PlayerIds.NO_PLAYER) {
+            console.error("panel-diplo-ribbon: invalid playerID parsed from data-player-id attribute (" + targetID + ") during mouseleave callback.");
+            return;
+        }
+        
+        // If this was the local player, remove the hover state from all ribbons
+        if (targetIDInt == GameContext.localPlayerID) {
+            // Remove hover effect from all banners
+            const civFlagContainers = document.querySelectorAll(".diplo-ribbon-outer");
+            for (const civFlagContainer of civFlagContainers) {
+                civFlagContainer.classList.remove("hover-all");
+                civFlagContainer.classList.remove("forced-show");
+            }
+        }
     }
 
     /**
@@ -53,9 +167,14 @@ export class DiploRibbonEnhancer {
             mainStyle.textContent = MAIN_STYLES;
             document.head.appendChild(mainStyle);
             
+            // Add the hover-all styles with improved hidden banners support
+            const hoverAllStyle = document.createElement('style');
+            hoverAllStyle.id = 'diplo-ribbon-hover-all-style';
+            hoverAllStyle.textContent = HOVER_ALL_STYLES;
+            document.head.appendChild(hoverAllStyle);
+            
             // Apply all settings-specific styles
             this.applyAllStyles();
-            
         } catch (error) {
             console.error("Error adding custom styles:", error);
         }
@@ -74,20 +193,26 @@ export class DiploRibbonEnhancer {
         // Apply the banner visibility styles first
         this.updateBannerYieldsVisibility(hideBanners);
         
+        // Get the civ symbol preference
+        const showCivSymbol = enhancedDiploBannersSettings && enhancedDiploBannersSettings.ShowCivSymbol !== false;
+        
         if (hideBanners) {
-            // For the civ banner/symbol, we need special handling when banners are hidden
-            // We need to show the civ symbol on the banner but hide it in the expanded view
-            this.addCivBannerWhenHidden();
-            // Force extended yields to not be shown
+            // Special handling for civ symbols when banners are hidden
+            this.addCivBannerWhenHidden(showCivSymbol);
+            // Force extended yields to not be shown when banners are hidden
             this.updateExtendedYieldsVisibility(false);
         } else {
-            // Apply all settings normally using the actual user settings
-            this.addCivBanner();
-            this.updateExtendedYieldsVisibility();
+            // Apply standard civ symbol style based on user setting
+            this.addCivBanner(showCivSymbol);
+            this.updateExtendedYieldsVisibility(true);
         }
         
         // Background style is always applied regardless of other settings
         this.updateBackgroundStyle();
+
+        // Apply compact mode scaling based on user setting
+        const scaleFactor = this.getScaleFactorFromSettings();
+        this.updateCompactMode(scaleFactor);
     }
     
     /**
@@ -99,7 +224,8 @@ export class DiploRibbonEnhancer {
             'civ-symbol-hidden-banners-style',
             'extended-yields-style',
             'banner-yields-style',
-            'background-style'
+            'background-style',
+            'compact-mode-style'
         ];
         
         styleIds.forEach(id => {
@@ -111,21 +237,58 @@ export class DiploRibbonEnhancer {
     }
 
     /**
-     * Add Civ banner
-     * @param {boolean} [useUserSetting=true] - If false, force hide civ symbols
+     * Update compact mode scaling
+     * @param {number} scaleFactor - Scale factor to apply (1.0 = normal, less than 1.0 = smaller)
      */
-    addCivBanner(useUserSetting = true) {
+    updateCompactMode(scaleFactor = SCALE_FACTORS.NORMAL) {
+        try {
+            const compactModeStyle = document.createElement('style');
+            compactModeStyle.id = 'compact-mode-style';
+            
+            // Apply the appropriate style based on the scale factor
+            if (scaleFactor === SCALE_FACTORS.NORMAL) {
+                compactModeStyle.textContent = COMPACT_MODE_STYLES.NORMAL;
+            } else if (scaleFactor === SCALE_FACTORS.COMPACT) {
+                compactModeStyle.textContent = COMPACT_MODE_STYLES.COMPACT;
+            } else if (scaleFactor === SCALE_FACTORS.ULTRA_COMPACT) {
+                compactModeStyle.textContent = COMPACT_MODE_STYLES.ULTRA_COMPACT;
+            } else {
+                // Default to normal if an invalid scale factor is provided
+                compactModeStyle.textContent = COMPACT_MODE_STYLES.NORMAL;
+            }
+            
+            document.head.appendChild(compactModeStyle);
+        } catch (error) {
+            console.error("Error updating compact mode:", error);
+        }
+    }
+
+    /**
+     * Gets the scale factor based on the compact mode setting
+     * @returns {number} Scale factor (1.0 = normal, 0.92 = compact, 0.85 = ultra-compact)
+     * @private
+     */
+    getScaleFactorFromSettings() {
+        const compactModeSetting = enhancedDiploBannersSettings?.CompactMode ?? 0;
+        if (compactModeSetting === 1) {
+            return SCALE_FACTORS.COMPACT; // 92%
+        } else if (compactModeSetting === 2) {
+            return SCALE_FACTORS.ULTRA_COMPACT; // 85%
+        }
+        return SCALE_FACTORS.NORMAL; // 100%
+    }
+
+    /**
+     * Add Civ banner
+     * @param {boolean} showCivSymbol - Whether to show civ symbols
+     */
+    addCivBanner(showCivSymbol = true) {
         try {
             const symbolStyle = document.createElement('style');
             symbolStyle.id = 'civ-symbol-style';
             
-            // Determine which style to use
-            let shouldShowSymbol = useUserSetting 
-                ? (enhancedDiploBannersSettings && enhancedDiploBannersSettings.ShowCivSymbol !== false)
-                : false;
-            
             // Apply the appropriate style
-            symbolStyle.textContent = shouldShowSymbol 
+            symbolStyle.textContent = showCivSymbol 
                 ? SHOW_CIV_SYMBOL_STYLES 
                 : HIDE_CIV_SYMBOL_STYLES;
             
@@ -137,19 +300,15 @@ export class DiploRibbonEnhancer {
     
     /**
      * Add special styles for civ symbol when banners are hidden
-     * This ensures the symbol is visible on the front banner but hidden when expanded
+     * This ensures the symbol is visible on the front banner but handled correctly when expanded
+     * @param {boolean} showCivSymbol - Whether to show civ symbols based on user preference
      */
-    addCivBannerWhenHidden() {
+    addCivBannerWhenHidden(showCivSymbol = true) {
         try {
             const symbolStyle = document.createElement('style');
             symbolStyle.id = 'civ-symbol-hidden-banners-style';
             
-            // Get user preference for showing the symbol
-            // To-Do: fix hovering if Civ Emblem is enabled while banners are hidden
-            // const userPrefersCivSymbol = enhancedDiploBannersSettings && enhancedDiploBannersSettings.ShowCivSymbol !== false;
-            const userPrefersCivSymbol = false;
-
-            // Create styles that show the symbol on the front banner but hide it in expanded view
+            // Create styles that handle symbol visibility appropriately
             symbolStyle.textContent = `
                 /* Always show the civ symbol on the front banner */
                 .diplo-ribbon .diplo-ribbon__symbol {
@@ -159,10 +318,22 @@ export class DiploRibbonEnhancer {
                     z-index: 10 !important;
                 }
                 
-                /* Hide the civ symbol when hovering/expanded */
+                /* Handle the civ symbol when hovering/expanded */
                 .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__symbol {
-                    display: ${userPrefersCivSymbol ? 'block' : 'none'} !important;
-                    ${userPrefersCivSymbol ? 'transform: scale(0.6) !important; margin-top: 2.3rem !important;' : ''}
+                    display: ${showCivSymbol ? 'block' : 'none'} !important;
+                    ${showCivSymbol ? 'transform: scale(0.6) !important; margin-top: 2.3rem !important;' : ''}
+                }
+                
+                /* Handle the civ symbol when hover-all class is present */
+                .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__symbol {
+                    display: ${showCivSymbol ? 'block' : 'none'} !important;
+                    ${showCivSymbol ? 'transform: scale(0.6) !important; margin-top: 2.3rem !important;' : ''}
+                }
+                
+                /* Make sure hover-all doesn't hide symbols if they should be shown */
+                .diplo-ribbon .diplo-ribbon-outer.hover-all.forced-show .diplo-ribbon__symbol {
+                    display: ${showCivSymbol ? 'block' : 'none'} !important;
+                    ${showCivSymbol ? 'transform: scale(0.6) !important; margin-top: 2.3rem !important;' : ''}
                 }
                 
                 /* Control the color bar above yields */
@@ -170,13 +341,15 @@ export class DiploRibbonEnhancer {
                     display: none !important;
                 }
                 
-                .diplo-ribbon .diplo-ribbon-outer:hover .diplo-background::before {
-                    display: ${userPrefersCivSymbol ? 'block' : 'none'} !important;
+                .diplo-ribbon .diplo-ribbon-outer:hover .diplo-background::before,
+                .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-background::before,
+                .diplo-ribbon .diplo-ribbon-outer.hover-all.forced-show .diplo-background::before {
+                    display: ${showCivSymbol ? 'block' : 'none'} !important;
                 }
                 
                 /* Adjust yields position */
                 .diplo-ribbon .diplo-ribbon__yields {
-                    margin-top: ${userPrefersCivSymbol ? '-0.1rem' : '-1.7rem'} !important;
+                    margin-top: ${showCivSymbol ? '-0.1rem' : '-1.7rem'} !important;
                 }
             `;
             
@@ -188,7 +361,7 @@ export class DiploRibbonEnhancer {
 
     /**
      * Update extended yields visibility based on settings
-     * @param {boolean} [useUserSetting=true] - If false, don't show extended yields
+     * @param {boolean} useUserSetting - If false, don't show extended yields
      */
     updateExtendedYieldsVisibility(useUserSetting = true) {
         try {
@@ -370,6 +543,22 @@ export class DiploRibbonEnhancer {
                 } else {
                     diploRibbon.classList.remove('hidden-banners-mode');
                 }
+                
+                // Ensure the civ symbol is properly displayed when banners aren't hidden
+                // and the setting is enabled
+                if (!enhancedDiploBannersSettings?.HideBanners 
+                    && enhancedDiploBannersSettings?.ShowCivSymbol !== false) {
+                    const symbol = diploRibbon.querySelector('.diplo-ribbon__symbol');
+                    if (symbol) {
+                        symbol.style.display = 'block';
+                        symbol.style.transform = 'scale(0.6)';
+                        symbol.style.marginTop = '2.3rem';
+                    }
+                }
+                
+                // Remove any hover-all and forced-show classes to ensure clean state
+                diploRibbon.classList.remove('hover-all');
+                diploRibbon.classList.remove('forced-show');
             });
         } catch (error) {
             console.error(`DiploRibbonEnhancer: Populate flags error - ${error.message}`);
@@ -507,7 +696,11 @@ export class DiploRibbonEnhancer {
     beforeAttach() {}
     afterAttach() {}
     beforeDetach() {}
-    afterDetach() {}
+    
+    // Clean up when component is detached
+    afterDetach() {
+        window.removeEventListener('update-diplo-ribbon', this.settingsChangedListener);
+    }
 }
 
 // Register the enhancer with the Controls system

@@ -1,5 +1,11 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.7.0] - 2025-03-22
+ - Add setting to re-size scale of the diplomacy banners (compact and ultra compact modes)
+ - Add setting to allow hovering on local player banner to reveal all other banners (default Civ behavior)
+ - Add a new stat in the additional yields - Military Power
+ - Fix issue where civ symbol would not appear on hover when diplomacy banners were hidden
+
 ## [1.6.1] - 2025-03-19
  - Move the settings to the dedicated 'Mods' tab
  - Fix issue with leader expressions - disabling them would show the neutral expression, and not their 'happy' expression

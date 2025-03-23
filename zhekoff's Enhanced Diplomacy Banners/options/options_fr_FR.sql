@@ -105,4 +105,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "fr_FR",
-    "Désactive les portraits dynamiques qui changent en fonction de votre relation avec ce dirigeant.");
+    "Désactive les portraits dynamiques qui changent en fonction de votre relation avec ce dirigeant."),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "fr_FR",
+    "Taille du Ruban"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "fr_FR",
+    "Ajustez la taille des bannières diplomatiques pour un affichage plus compact."),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "fr_FR",
+    "Normal"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "fr_FR",
+    "Compact"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "fr_FR",
+    "Ultra Compact"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "fr_FR",
+    "Afficher Tous les Rendements au Survol du Joueur Local"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "fr_FR",
+    "Lorsque vous survolez votre propre portrait de dirigeant, affiche également les rendements détaillés de tous les autres dirigeants.");

@@ -36,10 +36,12 @@ export const enhancedDiploBannersSettings = new class {
     _data = {
         StyleSetting: 1, // Default to Classic style
         ShowCivSymbol: true, // Default to showing civilization symbols
+        CompactMode: 0, // 0 = Normal, 1 = Compact, 2 = Ultra Compact
+        ShowAllYieldsOnLocalHover: true, // Default to showing all yields when hovering over local player
         AlwaysShowExtendedYields: false, // Default to hiding extended yields until hover
         BackgroundStyle: 1, // Default to the default dark background
         HideBanners: false, // Default to NOT hidden
-        DisableLeaderExpressions: false // New setting, default to showing leader expressions
+        DisableLeaderExpressions: false // Default to showing leader expressions
     };
 
     constructor() {
@@ -104,6 +106,24 @@ export const enhancedDiploBannersSettings = new class {
 
     set DisableLeaderExpressions(value) {
         this._data.DisableLeaderExpressions = value;
+        this.save();
+    }
+
+    get CompactMode() {
+        return this._data.CompactMode;
+    }
+    
+    set CompactMode(value) {
+        this._data.CompactMode = value;
+        this.save();
+    }
+
+    get ShowAllYieldsOnLocalHover() {
+        return this._data.ShowAllYieldsOnLocalHover;
+    }
+
+    set ShowAllYieldsOnLocalHover(value) {
+        this._data.ShowAllYieldsOnLocalHover = value;
         this.save();
     }
 }

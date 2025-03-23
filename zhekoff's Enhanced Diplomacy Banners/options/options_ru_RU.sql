@@ -106,4 +106,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "ru_RU",
-    "Отключает динамические портреты, которые меняются в зависимости от ваших отношений с этим лидером.");
+    "Отключает динамические портреты, которые меняются в зависимости от ваших отношений с этим лидером."),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "ru_RU",
+    "Размер Ленты"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "ru_RU",
+    "Отрегулируйте размер дипломатических баннеров для более компактного отображения."),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "ru_RU",
+    "Обычный"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "ru_RU",
+    "Компактный"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "ru_RU",
+    "Ультра-компактный"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "ru_RU",
+    "Показать Все Доходы при Наведении на Локального Игрока"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "ru_RU",
+    "При наведении курсора на портрет своего лидера также отображаются подробные доходы всех других лидеров.");

@@ -105,4 +105,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "de_DE",
-    "Deaktiviert die dynamischen Porträts, die sich je nach Ihrer Beziehung zu diesem Anführer ändern.");
+    "Deaktiviert die dynamischen Porträts, die sich je nach Ihrer Beziehung zu diesem Anführer ändern."),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "de_DE",
+    "Bannergröße"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "de_DE",
+    "Passen Sie die Größe der Diplomatenbanner für eine kompaktere Anzeige an."),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "de_DE",
+    "Normal"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "de_DE",
+    "Kompakt"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "de_DE",
+    "Ultra-Kompakt"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "de_DE",
+    "Alle Erträge beim Überfahren des lokalen Spielers anzeigen"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "de_DE",
+    "Wenn Sie mit der Maus über Ihr eigenes Anführerporträt fahren, werden die detaillierten Erträge für alle anderen Anführer ebenfalls angezeigt.");

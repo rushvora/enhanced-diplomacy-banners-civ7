@@ -11,5 +11,8 @@
 		<Replace Tag="LOC_YIELD_POPULATION_TOTAL" Language="zh_Hant_HK">
 			<Text>總人口。</Text>
 		</Replace>
+		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="zh_Hant_HK">
+			<Text>軍事力量</Text>
+		</Replace>
 	</LocalizedText>
 </Database>

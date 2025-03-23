@@ -106,4 +106,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "ko_KR",
-    "해당 지도자와의 관계에 따라 변하는 동적 초상화를 비활성화합니다.");
+    "해당 지도자와의 관계에 따라 변하는 동적 초상화를 비활성화합니다."),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "ko_KR",
+    "리본 크기"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "ko_KR",
+    "더 컴팩트한 디스플레이를 위해 외교 배너의 크기를 조정합니다."),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "ko_KR",
+    "일반"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "ko_KR",
+    "컴팩트"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "ko_KR",
+    "울트라 컴팩트"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "ko_KR",
+    "로컬 플레이어 호버 시 모든 산출량 표시"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "ko_KR",
+    "자신의 지도자 초상화에 마우스를 올리면 다른 모든 지도자의 상세 산출량도 함께 표시됩니다.");

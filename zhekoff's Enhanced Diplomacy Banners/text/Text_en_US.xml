@@ -10,5 +10,8 @@
 		<Row Tag="LOC_YIELD_POPULATION_TOTAL">
 			<Text>Population count.</Text>
 		</Row>
+		<Row Tag="LOC_YIELD_MILITARY_POWER">
+			<Text>Military Power</Text>
+		</Row>
 	</EnglishText>
 </Database>

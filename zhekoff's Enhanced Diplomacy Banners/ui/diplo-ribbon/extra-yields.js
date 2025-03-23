@@ -13,6 +13,7 @@ import DiploRibbonData, {
 RibbonYieldType.TotalGold = "totalGold";
 RibbonYieldType.TotalDiplomacy = "totalDiplomacy";
 RibbonYieldType.TotalPopulation = "totalPopulation";
+RibbonYieldType.MilitaryPower = "militaryPower";
 
 engine.whenReady.then(() => {
     try {
@@ -31,11 +32,41 @@ engine.whenReady.then(() => {
                 if (!this.shouldShowYieldType(RibbonDisplayType.Yields)) {
                     return [];
                 }
-                
+
                 // Safely extract yield values with fallback to 0
                 const safeGetNetYield = (yieldType) => 
                     playerLibrary.Stats?.getNetYield(yieldType) ?? 0;
                 
+                // Calculate military power
+                let militaryPower = 0;
+                try {
+                    // Check if Units collection is available
+                    if (playerLibrary.Units && typeof playerLibrary.Units.getUnits === 'function') {
+                        const units = playerLibrary.Units.getUnits();
+                        
+                        for (let i = 0; i < units.length; i++) {
+                            const unit = units[i];
+                            
+                            // Skip units that can't attack
+                            if (!unit.Combat || !unit.Combat.canAttack) {
+                                continue;
+                            }
+                            
+                            // Get the highest strength value (melee or ranged)
+                            const meleeStrength = unit.Combat.getMeleeStrength ? 
+                                unit.Combat.getMeleeStrength(false) : 0;
+                            const rangedStrength = unit.Combat.rangedStrength || 0;
+                            const strength = Math.max(meleeStrength, rangedStrength);
+                            
+                            // Use a non-linear formula to represent power
+                            // Units with higher strength have exponentially more impact
+                            militaryPower += Math.round(4 ** (strength / 17));
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error calculating military power:", error);
+                }
+
                 const yieldGold = safeGetNetYield(YieldTypes.YIELD_GOLD);
                 const yieldCulture = safeGetNetYield(YieldTypes.YIELD_CULTURE);
                 const yieldScience = safeGetNetYield(YieldTypes.YIELD_SCIENCE);
@@ -135,6 +166,15 @@ engine.whenReady.then(() => {
                         details: "",
                         img: this.getImg('YIELD_DIPLOMACY', isLocal),
                         rawValue: totalDiplomacy,
+                        warningThreshold: Infinity
+                    },
+                    {
+                        type: RibbonYieldType.MilitaryPower,
+                        label: Locale.compose("LOC_YIELD_MILITARY_POWER"),
+                        value: militaryPower,
+                        img: this.getImg('DIPLOMACY_DECLARE_FORMAL_WAR_ICON', isLocal),
+                        details: "",
+                        rawValue: militaryPower,
                         warningThreshold: Infinity
                     }
                 ];

@@ -105,4 +105,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "pl_PL",
-    "Wyłącza dynamiczne portrety, które zmieniają się w zależności od Twojej relacji z danym przywódcą.");
+    "Wyłącza dynamiczne portrety, które zmieniają się w zależności od Twojej relacji z danym przywódcą."),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "pl_PL",
+    "Rozmiar Wstążki"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "pl_PL",
+    "Dostosuj rozmiar banerów dyplomatycznych dla bardziej kompaktowego wyświetlania."),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "pl_PL",
+    "Normalny"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "pl_PL",
+    "Kompaktowy"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "pl_PL",
+    "Ultra Kompaktowy"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "pl_PL",
+    "Pokaż Wszystkie Plony przy Najechaniu na Lokalnego Gracza"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "pl_PL",
+    "Gdy najedziesz kursorem na portret swojego przywódcy, wyświetlą się również szczegółowe plony wszystkich innych przywódców.");

@@ -2,8 +2,8 @@
 
 **zhekoff's Enhanced Diplomacy Banners** is a UI improvement mod that transforms the diplomatic ribbon in Civilization VII. This mod provides a cleaner, more informative, and visually customizable interface for the diplomatic ribbons without affecting gameplay mechanics.
 
-* **Sleek, Compact Design:** Completely redesigned diplomatic banners with a cleaner, more space-efficient layout
-* **More Statistics:** View additional metrics including total gold reserves, total influence points, and population counts (configurable to show permanently or on hover)
+* **Sleek, Compact Design:** Completely redesigned diplomatic banners with a cleaner, more space-efficient layout (you can choose between 3 differnet scaling options if you want to have it more compact!)
+* **More Statistics:** View additional metrics including military power, total gold reserves, total influence points, and population counts (configurable to show permanently or on hover)
 * **Extensive Customization:**
     * Two relationship icon presets (Classic and Emoji)
     * Five background themes for different visual styles

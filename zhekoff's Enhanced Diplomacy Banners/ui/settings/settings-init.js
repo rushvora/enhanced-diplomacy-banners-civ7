@@ -87,6 +87,60 @@ Options.addInitCallback(() => {
         dropdownItems: backgroundStyleOptions
     });
 
+    // Compact Mode dropdown initialization
+    const onCompactModeInit = (optionInfo) => {
+        const currentSelection = enhancedDiploBannersSettings.CompactMode;
+        optionInfo.selectedItemIndex = currentSelection;
+    };
+
+    // Compact Mode dropdown update handler
+    const onCompactModeUpdate = (optionInfo, value) => {
+        const selectedOption = (optionInfo.dropdownItems?.[value]).setting;
+        enhancedDiploBannersSettings.CompactMode = selectedOption;
+        window.dispatchEvent(new UpdateDiploRibbonEvent());
+    };
+
+    // Available compact mode options
+    const compactModeOptions = [
+        { setting: 0, label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL" },
+        { setting: 1, label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT" },
+        { setting: 2, label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT" }
+    ];
+
+    Options.addOption({ 
+        category: CategoryType.Mods,
+        group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
+        type: OptionType.Dropdown,
+        id: "zhekoff-diplo-compact-mode",
+        initListener: onCompactModeInit,
+        updateListener: onCompactModeUpdate,
+        label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+        description: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+        dropdownItems: compactModeOptions
+    });
+
+    // Show All Yields on Local Player Hover checkbox initialization
+    const onShowAllYieldsOnLocalHoverInit = (optionInfo) => {
+        optionInfo.currentValue = enhancedDiploBannersSettings.ShowAllYieldsOnLocalHover;
+    };
+
+    // Show All Yields on Local Player Hover checkbox update handler
+    const onShowAllYieldsOnLocalHoverUpdate = (optionInfo, value) => {
+        enhancedDiploBannersSettings.ShowAllYieldsOnLocalHover = value;
+        window.dispatchEvent(new UpdateDiploRibbonEvent());
+    };
+
+    Options.addOption({ 
+        category: CategoryType.Mods,
+        group: 'ZHEKOFF_ENHANCED_DIPLO_BANNERS',
+        type: OptionType.Checkbox,
+        id: "zhekoff-diplo-show-all-yields-on-local-hover",
+        initListener: onShowAllYieldsOnLocalHoverInit,
+        updateListener: onShowAllYieldsOnLocalHoverUpdate,
+        label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+        description: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION"
+    });
+
     // Show Civilization Symbol checkbox initialization
     const onShowCivSymbolInit = (optionInfo) => {
         optionInfo.currentValue = enhancedDiploBannersSettings.ShowCivSymbol;

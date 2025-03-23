@@ -105,4 +105,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "ja_JP",
-    "その指導者との関係に基づいて変化する動的な肖像画を無効にします。");
+    "その指導者との関係に基づいて変化する動的な肖像画を無効にします。"),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "ja_JP",
+    "リボンサイズ"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "ja_JP",
+    "より適格な表示のために外交バナーのサイズを調整します。"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "ja_JP",
+    "通常"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "ja_JP",
+    "コンパクト"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "ja_JP",
+    "超コンパクト"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "ja_JP",
+    "ローカルプレイヤーホバー時にすべての収益を表示"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "ja_JP",
+    "自分の指導者の肖像画にマウスを置くと、他のすべての指導者の詳細な収益も表示されます。");

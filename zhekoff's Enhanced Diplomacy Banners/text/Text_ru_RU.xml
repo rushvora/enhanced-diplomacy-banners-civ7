@@ -10,5 +10,8 @@
         <Row Tag="LOC_YIELD_POPULATION_TOTAL" Language="ru_RU">
             <Text>Общее количество населения.</Text>
         </Row>
+        <Replace Tag="LOC_YIELD_MILITARY_POWER" Language="ru_RU">
+            <Text>Военная Мощь</Text>
+        </Replace>
     </LocalizedText>
 </Database>

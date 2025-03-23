@@ -11,5 +11,8 @@
 		<Row Tag="LOC_YIELD_POPULATION_TOTAL" Language="pt_BR">
 			<Text>Quantidade total de população.</Text>
 		</Row>
+		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="pt_BR">
+			<Text>Poder Militar</Text>
+		</Replace>
 	</LocalizedText>
 </Database>

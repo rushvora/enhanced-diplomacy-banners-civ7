@@ -11,5 +11,8 @@
 		<Replace Tag="LOC_YIELD_POPULATION_TOTAL" Language="it_IT">
 			<Text>Popolazione totale.</Text>
 		</Replace>
+		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="it_IT">
+			<Text>Potenza Militare</Text>
+		</Replace>
 	</LocalizedText>
 </Database>

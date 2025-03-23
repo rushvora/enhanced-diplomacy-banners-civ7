@@ -105,4 +105,34 @@ VALUES
 
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_DISABLE_LEADER_EXPRESSIONS_DESCRIPTION",
     "zh_Hant_HK",
-    "禁用根據您與該領袖的關係而變化的動態肖像。");
+    "禁用根據您與該領袖的關係而變化的動態肖像。"),
+
+    -- Compact Mode Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NAME",
+    "zh_Hant_HK",
+    "橫幅大小"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_DESCRIPTION",
+    "zh_Hant_HK",
+    "調整外交橫幅的大小以獲得更緊湊的顯示。"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_NORMAL",
+    "zh_Hant_HK",
+    "正常"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_COMPACT",
+    "zh_Hant_HK",
+    "緊湊"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_COMPACT_MODE_ULTRA_COMPACT",
+    "zh_Hant_HK",
+    "超緊湊"),
+
+    -- Show All Yields on Local Player Hover Option
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_NAME",
+    "zh_Hant_HK",
+    "懸停在本地玩家上時顯示所有產出"),
+    
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_ALL_YIELDS_ON_LOCAL_HOVER_DESCRIPTION",
+    "zh_Hant_HK",
+    "當滑鼠懸停在您自己的領袖肖像上時，也會顯示所有其他領袖的詳細產出。");
