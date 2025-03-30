@@ -25,6 +25,10 @@ VALUES
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EMOJI",
     "en_US",
     "Emoji"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EU",
+    "en_US",
+    "EU"),
     
     -- Show Civilization Symbol Option
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_CIV_SYMBOL_NAME",

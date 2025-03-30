@@ -27,6 +27,10 @@ VALUES
      "ko_KR",
      "이모지"),
 
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EU",
+    "ko_KR",
+    "EU"),
+
      -- Show Civilization Symbol Option
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_CIV_SYMBOL_NAME",
     "ko_KR",

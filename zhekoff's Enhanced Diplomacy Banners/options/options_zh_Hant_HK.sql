@@ -25,6 +25,10 @@ VALUES
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EMOJI",
     "zh_Hant_HK",
     "表情符號"),
+
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EU",
+    "zh_Hant_HK",
+    "歐盟"),
     
     -- Show Civilization Symbol Option
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_CIV_SYMBOL_NAME",

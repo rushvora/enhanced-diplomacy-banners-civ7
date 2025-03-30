@@ -34,7 +34,8 @@ Options.addInitCallback(() => {
     // Available icon style options
     const iconStyleOptions = [
         { setting: 1, label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_CLASSIC" },
-        { setting: 2, label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EMOJI" }
+        { setting: 2, label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EMOJI" },
+        { setting: 3, label: "LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EU" },
     ];
 
     Options.addOption({ 

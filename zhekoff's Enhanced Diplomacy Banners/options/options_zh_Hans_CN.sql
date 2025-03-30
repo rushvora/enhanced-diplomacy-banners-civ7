@@ -26,6 +26,10 @@ VALUES
     "zh_Hans_CN",
     "表情符号"),
     
+    ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_ICON_STYLE_EU",
+    "zh_Hans_CN",
+    "欧盟"),
+
     -- Show Civilization Symbol Option
     ("LOC_MOD_ZHEKOFF_DIPLO_RIBBON_SHOW_CIV_SYMBOL_NAME",
     "zh_Hans_CN",

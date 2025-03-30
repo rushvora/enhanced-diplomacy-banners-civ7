@@ -26,6 +26,16 @@ const RELATIONSHIP_ICON_SETS = {
         "PLAYER_RELATIONSHIP_NEUTRAL": "fs://game/enhanced-diplomacy-banners/icons/emoji/neutral_emoji.png",
         "PLAYER_RELATIONSHIP_UNFRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/emoji/unfriendly_emoji.png",
         "PLAYER_RELATIONSHIP_AT_WAR": "fs://game/enhanced-diplomacy-banners/icons/emoji/war_emoji.png"
+    },
+    // Style 3: EU
+    3: {
+        "PLAYER_RELATIONSHIP_ALLIANCE": "fs://game/enhanced-diplomacy-banners/icons/eu/alliance_eu.png",
+        "PLAYER_RELATIONSHIP_FRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/eu/friendly_eu.png",
+        "PLAYER_RELATIONSHIP_HELPFUL": "fs://game/enhanced-diplomacy-banners/icons/eu/helpful_eu.png",
+        "PLAYER_RELATIONSHIP_HOSTILE": "fs://game/enhanced-diplomacy-banners/icons/eu/hostile_eu.png",
+        "PLAYER_RELATIONSHIP_NEUTRAL": "fs://game/enhanced-diplomacy-banners/icons/eu/neutral_eu.png",
+        "PLAYER_RELATIONSHIP_UNFRIENDLY": "fs://game/enhanced-diplomacy-banners/icons/eu/unfriendly_eu.png",
+        "PLAYER_RELATIONSHIP_AT_WAR": "fs://game/enhanced-diplomacy-banners/icons/eu/war_eu.png"
     }
 };
 

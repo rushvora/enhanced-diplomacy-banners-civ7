@@ -1,6 +1,6 @@
 /**
- * @file extra-yields.js
- * @description Extension for diplomatic ribbon to enhance yield display in Civ 7
+ * @file features/extra-yields.js
+ * @description Enhanced yield display with optimized performance
  */
 
 import DiploRibbonData, { 
@@ -15,6 +15,94 @@ RibbonYieldType.TotalDiplomacy = "totalDiplomacy";
 RibbonYieldType.TotalPopulation = "totalPopulation";
 RibbonYieldType.MilitaryPower = "militaryPower";
 
+// Simple cache implementation
+class SimpleCache {
+    constructor(lifetime = 2000) {
+        this.cache = new Map();
+        this.lifetime = lifetime;
+    }
+    
+    get(key) {
+        const entry = this.cache.get(key);
+        if (!entry) return null;
+        
+        // Check if entry is expired
+        if (Date.now() - entry.timestamp > this.lifetime) {
+            this.cache.delete(key);
+            return null;
+        }
+        
+        return entry.value;
+    }
+    
+    set(key, value) {
+        this.cache.set(key, {
+            value,
+            timestamp: Date.now()
+        });
+    }
+    
+    clear() {
+        this.cache.clear();
+    }
+}
+
+// Create caches with 2 second lifetime
+const militaryPowerCache = new SimpleCache();
+const yieldDataCache = new SimpleCache();
+
+// Calculate military power with caching
+function calculateMilitaryPower(playerLibrary) {
+    // Return 0 if no player library
+    if (!playerLibrary) return 0;
+    
+    // Create a cache key based on player ID and units count
+    const playerId = playerLibrary.PlayerID;
+    const unitsCollection = playerLibrary.Units;
+    const unitsCount = unitsCollection?.getUnits()?.length || 0;
+    const cacheKey = `military_${playerId}_${unitsCount}`;
+    
+    // Check cache first
+    const cachedPower = militaryPowerCache.get(cacheKey);
+    if (cachedPower !== null) {
+        return cachedPower;
+    }
+    
+    // Calculate military power
+    let militaryPower = 0;
+    try {
+        // Check if Units collection is available
+        if (unitsCollection && typeof unitsCollection.getUnits === 'function') {
+            const units = unitsCollection.getUnits();
+            
+            for (let i = 0; i < units.length; i++) {
+                const unit = units[i];
+                
+                // Skip units that can't attack
+                if (!unit.Combat || !unit.Combat.canAttack) {
+                    continue;
+                }
+                
+                // Get the highest strength value (melee or ranged)
+                const meleeStrength = unit.Combat.getMeleeStrength ? 
+                    unit.Combat.getMeleeStrength(false) : 0;
+                const rangedStrength = unit.Combat.rangedStrength || 0;
+                const strength = Math.max(meleeStrength, rangedStrength);
+                
+                // Use a non-linear formula to represent power
+                militaryPower += Math.round(4 ** (strength / 17));
+            }
+        }
+    } catch (error) {
+        console.error("Error calculating military power:", error);
+    }
+    
+    // Store in cache
+    militaryPowerCache.set(cacheKey, militaryPower);
+    
+    return militaryPower;
+}
+
 engine.whenReady.then(() => {
     try {
         if (DiploRibbonData) {
@@ -26,47 +114,49 @@ engine.whenReady.then(() => {
                 this._ribbonDisplayTypes = [RibbonDisplayType.Yields];
             };
             
-            // Enhanced yield data generation
+            // Add military power calculation method to DiploRibbonData
+            DiploRibbonData.calculateMilitaryPower = calculateMilitaryPower;
+            
+            // Enhanced yield data generation with caching
             DiploRibbonData.createPlayerYieldsData = function(playerLibrary, isLocal) {
                 // Early exit if yields shouldn't be shown
                 if (!this.shouldShowYieldType(RibbonDisplayType.Yields)) {
                     return [];
                 }
-
+                
+                // Create a cache key based on player ID
+                const playerId = playerLibrary.PlayerID;
+                
+                // Include timestamp in key to detect stale data
+                const stats = playerLibrary.Stats;
+                const treasury = playerLibrary.Treasury;
+                
+                // Create a fingerprint of key stats to detect changes
+                const yieldFingerprint = [
+                    stats?.getNetYield(YieldTypes.YIELD_GOLD) || 0,
+                    stats?.getNetYield(YieldTypes.YIELD_CULTURE) || 0,
+                    stats?.getNetYield(YieldTypes.YIELD_SCIENCE) || 0,
+                    stats?.getNetYield(YieldTypes.YIELD_HAPPINESS) || 0,
+                    stats?.getNetYield(YieldTypes.YIELD_DIPLOMACY) || 0,
+                    stats?.numSettlements || 0,
+                    treasury?.goldBalance || 0
+                ].join('_');
+                
+                const cacheKey = `yields_${playerId}_${yieldFingerprint}`;
+                
+                // Check cache first
+                const cachedData = yieldDataCache.get(cacheKey);
+                if (cachedData) {
+                    return cachedData;
+                }
+                
                 // Safely extract yield values with fallback to 0
                 const safeGetNetYield = (yieldType) => 
                     playerLibrary.Stats?.getNetYield(yieldType) ?? 0;
                 
                 // Calculate military power
-                let militaryPower = 0;
-                try {
-                    // Check if Units collection is available
-                    if (playerLibrary.Units && typeof playerLibrary.Units.getUnits === 'function') {
-                        const units = playerLibrary.Units.getUnits();
-                        
-                        for (let i = 0; i < units.length; i++) {
-                            const unit = units[i];
-                            
-                            // Skip units that can't attack
-                            if (!unit.Combat || !unit.Combat.canAttack) {
-                                continue;
-                            }
-                            
-                            // Get the highest strength value (melee or ranged)
-                            const meleeStrength = unit.Combat.getMeleeStrength ? 
-                                unit.Combat.getMeleeStrength(false) : 0;
-                            const rangedStrength = unit.Combat.rangedStrength || 0;
-                            const strength = Math.max(meleeStrength, rangedStrength);
-                            
-                            // Use a non-linear formula to represent power
-                            // Units with higher strength have exponentially more impact
-                            militaryPower += Math.round(4 ** (strength / 17));
-                        }
-                    }
-                } catch (error) {
-                    console.error("Error calculating military power:", error);
-                }
-
+                const militaryPower = this.calculateMilitaryPower(playerLibrary);
+                
                 const yieldGold = safeGetNetYield(YieldTypes.YIELD_GOLD);
                 const yieldCulture = safeGetNetYield(YieldTypes.YIELD_CULTURE);
                 const yieldScience = safeGetNetYield(YieldTypes.YIELD_SCIENCE);
@@ -179,8 +269,18 @@ engine.whenReady.then(() => {
                     }
                 ];
             
+                // Store in cache
+                yieldDataCache.set(cacheKey, yieldData);
+                
                 return yieldData;
             };
+            
+            // Clear caches when game turn changes
+            engine.on('PlayerTurnActivated', () => {
+                militaryPowerCache.clear();
+                yieldDataCache.clear();
+                console.log("Enhanced Diplomacy Banners: Cache cleared for new turn");
+            });
             
             // Force a refresh to apply changes
             DiploRibbonData.queueUpdate();

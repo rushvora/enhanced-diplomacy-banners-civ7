@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Mod id="enhanced-diplomacy-banners" version="1.1.1"
+<Mod id="enhanced-diplomacy-banners" version="1.8.0"
 	xmlns="ModInfo">
 	<Properties>
 		<Name>zhekoff's Enhanced Diplomacy Banners</Name>
@@ -36,19 +36,43 @@
 					<Item>icons/emoji/neutral.png</Item>
 					<Item>icons/emoji/unfriendly.png</Item>
 					<Item>icons/emoji/war.png</Item>
+					<!-- EU Icons Preset -->
+					<Item>icons/eu/alliance.png</Item>
+					<Item>icons/eu/friendly.png</Item>
+					<Item>icons/eu/helpful.png</Item>
+					<Item>icons/eu/hostile.png</Item>
+					<Item>icons/eu/neutral.png</Item>
+					<Item>icons/eu/unfriendly.png</Item>
+					<Item>icons/eu/war.png</Item>
 				</ImportFiles>
 				<UIScripts>
 					<!-- Settings -->
 					<Item>ui/settings/settings.js</Item>
 					<Item>ui/settings/settings-init.js</Item>
 					<Item>ui/settings/settings-shell-init.js</Item>
-					<!-- Extensions -->
-					<Item>ui/diplo-ribbon/constants.js</Item>
-					<Item>ui/diplo-ribbon/compact-mode.js</Item>
-					<Item>ui/diplo-ribbon/leader-expressions.js</Item>
+					<!-- Core Modules -->
+					<Item>ui/diplo-ribbon/core/style-manager.js</Item>
+					<Item>ui/diplo-ribbon/core/portrait-manager.js</Item>
+					<Item>ui/diplo-ribbon/core/background-manager.js</Item>
+					<Item>ui/diplo-ribbon/core/yield-manager.js</Item>
+					<Item>ui/diplo-ribbon/core/dom-utils.js</Item>
+					<Item>ui/diplo-ribbon/core/settings-manager.js</Item>
+					<Item>ui/diplo-ribbon/core/index.js</Item>
+					<!-- Style Files -->
+					<Item>ui/diplo-ribbon/styles/index.js</Item>
+					<Item>ui/diplo-ribbon/styles/base-styles.js</Item>
+					<Item>ui/diplo-ribbon/styles/background-styles.js</Item>
+					<Item>ui/diplo-ribbon/styles/banner-visibility.js</Item>
+					<Item>ui/diplo-ribbon/styles/civ-symbol-styles.js</Item>
+					<Item>ui/diplo-ribbon/styles/extended-yields.js</Item>
+					<Item>ui/diplo-ribbon/styles/hover-effects.js</Item>
+					<!-- Feature Modules -->
+					<Item>ui/diplo-ribbon/features/compact-mode.js</Item>
+					<Item>ui/diplo-ribbon/features/extra-yields.js</Item>
+					<Item>ui/diplo-ribbon/features/leader-expressions.js</Item>
+					<Item>ui/diplo-ribbon/features/relationship-icon-replacement.js</Item>
+					<!-- Main Extension -->
 					<Item>ui/diplo-ribbon/panel-diplo-ribbon-extension.js</Item>
-					<Item>ui/diplo-ribbon/relationship-icon-replacement.js</Item>
-					<Item>ui/diplo-ribbon/extra-yields.js</Item>
 				</UIScripts>
 				<UpdateText>
 					<!-- Base language -->

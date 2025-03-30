@@ -1,5 +1,9 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.7.1] - 2025-03-30
+ - Massive re-structuring of project files - better separation of concerns + considerable performance improvements
+ - Updated classic icon preset, added a new EU-inspired classic icon preset
+
 ## [1.7.0] - 2025-03-22
  - Add setting to re-size scale of the diplomacy banners (compact and ultra compact modes)
  - Add setting to allow hovering on local player banner to reveal all other banners (default Civ behavior)
