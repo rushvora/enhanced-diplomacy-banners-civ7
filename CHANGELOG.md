@@ -1,5 +1,9 @@
 # zhekoff's Enhanced Diplomacy Banners
 
+## [1.7.2] - 2025-28-04
+ - Fix issue with team banners for multiplayer from patch 1.2.0
+ - Fix banners not showing up on first meet screens, as well as additional diplomacy screen where they were broken
+
 ## [1.7.1] - 2025-03-30
  - Massive re-structuring of project files - better separation of concerns + considerable performance improvements
  - Updated classic icon preset, added a new EU-inspired classic icon preset

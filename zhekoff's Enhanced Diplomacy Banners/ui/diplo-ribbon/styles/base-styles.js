@@ -5,6 +5,26 @@
 
 // Main styles for the diplomatic ribbon
 export const MAIN_STYLES = `
+    /* Team banners (multiplayer) */
+    .diplo-ribbon .diplo-ribbon__team-overlay {
+        background-image: url("fs://game/mp_hud_banner_teamcolor.png");
+        background-size: 100% 100%;
+        margin-top: -7rem;
+        width: 3.1666666667rem;
+        height: 7.3333333333rem;
+        z-index: 5 !important;
+        transform: scale(0.9) !important;
+    }
+    
+    .diplo-ribbon .diplo-ribbon__team-text {
+        margin-top: -2.7rem !important;
+        z-index: 10 !important;  /* Higher z-index than the overlay */
+        font-weight: bold !important;
+        font-size: 0.9rem !important;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.7) !important;
+        color: white !important;
+    }
+
     /* Scope all styles to the diplomatic ribbon component */
     .diplo-ribbon .diplo-ribbon__symbol {
         transform: scale(0.6) !important;

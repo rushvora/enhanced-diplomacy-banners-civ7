@@ -71,6 +71,7 @@
 					<Item>ui/diplo-ribbon/features/extra-yields.js</Item>
 					<Item>ui/diplo-ribbon/features/leader-expressions.js</Item>
 					<Item>ui/diplo-ribbon/features/relationship-icon-replacement.js</Item>
+					<Item>ui/diplo-ribbon/features/first-meet-fix.js</Item>
 					<!-- Main Extension -->
 					<Item>ui/diplo-ribbon/panel-diplo-ribbon-extension.js</Item>
 				</UIScripts>
