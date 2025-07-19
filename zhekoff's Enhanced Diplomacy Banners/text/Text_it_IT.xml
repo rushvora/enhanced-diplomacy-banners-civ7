@@ -14,5 +14,8 @@
 		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="it_IT">
 			<Text>Potenza Militare</Text>
 		</Replace>
+		<Replace Tag="LOC_YIELD_TRADE_ROUTES" Language="it_IT">
+			<Text>Rotte Commerciali</Text>
+		</Replace>
 	</LocalizedText>
 </Database>

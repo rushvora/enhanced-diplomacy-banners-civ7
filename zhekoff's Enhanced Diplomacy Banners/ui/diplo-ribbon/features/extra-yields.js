@@ -14,6 +14,7 @@ RibbonYieldType.TotalGold = "totalGold";
 RibbonYieldType.TotalDiplomacy = "totalDiplomacy";
 RibbonYieldType.TotalPopulation = "totalPopulation";
 RibbonYieldType.MilitaryPower = "militaryPower";
+RibbonYieldType.TradeRoutes = "tradeRoutes";
 
 // Simple cache implementation
 class SimpleCache {
@@ -50,6 +51,7 @@ class SimpleCache {
 // Create caches with 2 second lifetime
 const militaryPowerCache = new SimpleCache();
 const yieldDataCache = new SimpleCache();
+const tradeRouteCache = new SimpleCache();
 
 // Calculate military power with caching
 function calculateMilitaryPower(playerLibrary) {
@@ -103,6 +105,44 @@ function calculateMilitaryPower(playerLibrary) {
     return militaryPower;
 }
 
+// Calculate trade route information with caching
+function calculateTradeRoutes(playerLibrary) {
+    // Return default values if no player library
+    if (!playerLibrary) return { current: 0, max: 0, displayText: "99/99" };
+    
+    const playerId = playerLibrary.PlayerID;
+    const localPlayer = Players.get(GameContext.localPlayerID);
+    if (!localPlayer) return { current: 0, max: 0, displayText: "99/99" };
+    const cacheKey = `traderoutes_${playerId}`;
+    
+    // Check cache first
+    const cachedRoutes = tradeRouteCache.get(cacheKey);
+    if (cachedRoutes !== null) {
+        return cachedRoutes;
+    }
+    
+    let currentTradeRoutes = 0;
+    let maxTradeRoutes = 0;
+    
+    try {
+        currentTradeRoutes = localPlayer.Trade?.countPlayerTradeRoutesTo(playerLibrary.id) ?? 0;
+        maxTradeRoutes = localPlayer.Trade?.getTradeCapacityFromPlayer(playerLibrary.id) ?? 0;
+    } catch (error) {
+        console.error("Error calculating trade routes:", error);
+    }
+    
+    const result = {
+        current: currentTradeRoutes,
+        max: maxTradeRoutes,
+        displayText: `${currentTradeRoutes}/${maxTradeRoutes}`
+    };
+    
+    // Store in cache
+    tradeRouteCache.set(cacheKey, result);
+    
+    return result;
+}
+
 engine.whenReady.then(() => {
     try {
         if (DiploRibbonData) {
@@ -116,6 +156,9 @@ engine.whenReady.then(() => {
             
             // Add military power calculation method to DiploRibbonData
             DiploRibbonData.calculateMilitaryPower = calculateMilitaryPower;
+            
+            // Add trade route calculation method to DiploRibbonData
+            DiploRibbonData.calculateTradeRoutes = calculateTradeRoutes;
             
             // Enhanced yield data generation with caching
             DiploRibbonData.createPlayerYieldsData = function(playerLibrary, isLocal) {
@@ -156,6 +199,9 @@ engine.whenReady.then(() => {
                 
                 // Calculate military power
                 const militaryPower = this.calculateMilitaryPower(playerLibrary);
+
+                // Calculate trade routes
+                const tradeRoutes = this.calculateTradeRoutes(playerLibrary);
                 
                 const yieldGold = safeGetNetYield(YieldTypes.YIELD_GOLD);
                 const yieldCulture = safeGetNetYield(YieldTypes.YIELD_CULTURE);
@@ -266,6 +312,15 @@ engine.whenReady.then(() => {
                         details: "",
                         rawValue: militaryPower,
                         warningThreshold: Infinity
+                    },
+                    {
+                        type: RibbonYieldType.TradeRoutes,
+                        label: Locale.compose("LOC_YIELD_TRADE_ROUTES"),
+                        value: tradeRoutes.displayText,
+                        img: this.getImg('YIELD_TRADES', isLocal),
+                        details: "",
+                        rawValue: tradeRoutes.current,
+                        warningThreshold: tradeRoutes.max
                     }
                 ];
             
@@ -279,6 +334,7 @@ engine.whenReady.then(() => {
             engine.on('PlayerTurnActivated', () => {
                 militaryPowerCache.clear();
                 yieldDataCache.clear();
+                tradeRouteCache.clear();
                 console.log("Enhanced Diplomacy Banners: Cache cleared for new turn");
             });
             

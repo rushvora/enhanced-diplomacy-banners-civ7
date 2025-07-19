@@ -13,5 +13,8 @@
         <Replace Tag="LOC_YIELD_MILITARY_POWER" Language="ru_RU">
             <Text>Военная Мощь</Text>
         </Replace>
+        <Replace Tag="LOC_YIELD_TRADE_ROUTES" Language="ru_RU">
+            <Text>Торговые Пути</Text>
+        </Replace>
     </LocalizedText>
 </Database>

@@ -13,5 +13,8 @@
 		<Row Tag="LOC_YIELD_MILITARY_POWER">
 			<Text>Military Power</Text>
 		</Row>
+		<Row Tag="LOC_YIELD_TRADE_ROUTES">
+			<Text>Trade Routes</Text>
+		</Row>
 	</EnglishText>
 </Database>

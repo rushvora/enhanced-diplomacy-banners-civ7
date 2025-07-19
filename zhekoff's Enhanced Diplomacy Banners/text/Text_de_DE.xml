@@ -14,5 +14,8 @@
 		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="de_DE">
 			<Text>Militärische Stärke</Text>
 		</Replace>
+		<Replace Tag="LOC_YIELD_TRADE_ROUTES" Language="de_DE">
+			<Text>Handelsrouten</Text>
+		</Replace>
 	</LocalizedText>
 </Database>

@@ -14,5 +14,8 @@
 		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="zh_Hans_CN">
 			<Text>军事力量</Text>
 		</Replace>
+		<Replace Tag="LOC_YIELD_TRADE_ROUTES" Language="zh_Hans_CN">
+			<Text>贸易路线</Text>
+		</Replace>
 	</LocalizedText>
 </Database>

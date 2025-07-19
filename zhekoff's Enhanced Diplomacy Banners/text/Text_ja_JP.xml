@@ -14,5 +14,8 @@
 		<Replace Tag="LOC_YIELD_MILITARY_POWER" Language="ja_JP">
 			<Text>軍事力</Text>
 		</Replace>
+		<Replace Tag="LOC_YIELD_TRADE_ROUTES" Language="ja_JP">
+			<Text>交易路</Text>
+		</Replace>
 	</LocalizedText>
 </Database>
