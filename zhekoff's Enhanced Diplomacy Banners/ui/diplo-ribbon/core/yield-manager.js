@@ -34,11 +34,11 @@ export class YieldManager {
                 yieldItems[i].style.maxHeight = '2rem';
                 
                 // Add separator to first extended item
-                if (i === 5) {
-                    yieldItems[i].style.borderTop = '0.0555555556rem solid #8C7F66';
-                    yieldItems[i].style.marginTop = '0.5rem';
-                    yieldItems[i].style.paddingTop = '0.5rem';
-                }
+                // if (i === 6) {
+                //     yieldItems[i].style.borderTop = '0.0555555556rem solid #8C7F66';
+                //     yieldItems[i].style.marginTop = '0.5rem';
+                //     yieldItems[i].style.paddingTop = '0.5rem';
+                // }
             } else {
                 // Hide by default, shown on hover via CSS
                 yieldItems[i].style.display = 'block';

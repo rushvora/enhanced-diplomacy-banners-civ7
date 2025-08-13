@@ -14,7 +14,6 @@ RibbonYieldType.TotalGold = "totalGold";
 RibbonYieldType.TotalDiplomacy = "totalDiplomacy";
 RibbonYieldType.TotalPopulation = "totalPopulation";
 RibbonYieldType.MilitaryPower = "militaryPower";
-RibbonYieldType.TradeRoutes = "tradeRoutes";
 
 // Simple cache implementation
 class SimpleCache {
@@ -51,7 +50,6 @@ class SimpleCache {
 // Create caches with 2 second lifetime
 const militaryPowerCache = new SimpleCache();
 const yieldDataCache = new SimpleCache();
-const tradeRouteCache = new SimpleCache();
 
 // Calculate military power with caching
 function calculateMilitaryPower(playerLibrary) {
@@ -105,42 +103,18 @@ function calculateMilitaryPower(playerLibrary) {
     return militaryPower;
 }
 
-// Calculate trade route information with caching
-function calculateTradeRoutes(playerLibrary) {
-    // Return default values if no player library
-    if (!playerLibrary) return { current: 0, max: 0, displayText: "99/99" };
-    
-    const playerId = playerLibrary.PlayerID;
+function getPlayerTradeOpprotunities(playerLibrary) {
     const localPlayer = Players.get(GameContext.localPlayerID);
-    if (!localPlayer) return { current: 0, max: 0, displayText: "99/99" };
-    const cacheKey = `traderoutes_${playerId}`;
-    
-    // Check cache first
-    const cachedRoutes = tradeRouteCache.get(cacheKey);
-    if (cachedRoutes !== null) {
-        return cachedRoutes;
+    if (!localPlayer) {
+        console.error(`model-diplo-ribbon: Failed to retrieve PlayerLibrary for Player ${GameContext.localPlayerID}`);
+        return null;
     }
-    
-    let currentTradeRoutes = 0;
-    let maxTradeRoutes = 0;
-    
-    try {
-        currentTradeRoutes = localPlayer.Trade?.countPlayerTradeRoutesTo(playerLibrary.id) ?? 0;
-        maxTradeRoutes = localPlayer.Trade?.getTradeCapacityFromPlayer(playerLibrary.id) ?? 0;
-    } catch (error) {
-        console.error("Error calculating trade routes:", error);
-    }
-    
-    const result = {
-        current: currentTradeRoutes,
-        max: maxTradeRoutes,
-        displayText: `${currentTradeRoutes}/${maxTradeRoutes}`
+    const currentTradesWithCiv = localPlayer.Trade?.countPlayerTradeRoutesTo(playerLibrary.id) ?? 0;
+    const maxTradeLimitWithCiv = localPlayer.Trade?.getTradeCapacityFromPlayer(playerLibrary.id) ?? 0;
+    return {
+        currentTradesWithCiv,
+        maxTradeLimitWithCiv
     };
-    
-    // Store in cache
-    tradeRouteCache.set(cacheKey, result);
-    
-    return result;
 }
 
 engine.whenReady.then(() => {
@@ -158,7 +132,7 @@ engine.whenReady.then(() => {
             DiploRibbonData.calculateMilitaryPower = calculateMilitaryPower;
             
             // Add trade route calculation method to DiploRibbonData
-            DiploRibbonData.calculateTradeRoutes = calculateTradeRoutes;
+            DiploRibbonData.getPlayerTradeOpprotunities = getPlayerTradeOpprotunities;
             
             // Enhanced yield data generation with caching
             DiploRibbonData.createPlayerYieldsData = function(playerLibrary, isLocal) {
@@ -201,7 +175,7 @@ engine.whenReady.then(() => {
                 const militaryPower = this.calculateMilitaryPower(playerLibrary);
 
                 // Calculate trade routes
-                const tradeRoutes = this.calculateTradeRoutes(playerLibrary);
+                const tradeInfo = this.getPlayerTradeOpprotunities(playerLibrary);
                 
                 const yieldGold = safeGetNetYield(YieldTypes.YIELD_GOLD);
                 const yieldCulture = safeGetNetYield(YieldTypes.YIELD_CULTURE);
@@ -233,15 +207,6 @@ engine.whenReady.then(() => {
                         warningThreshold: Infinity
                     },
                     {
-                        type: RibbonYieldType.Diplomacy,
-                        label: Locale.compose("LOC_YIELD_DIPLOMACY"),
-                        value: formatYieldValue(yieldDiplomacy),
-                        img: this.getImg('YIELD_DIPLOMACY', isLocal),
-                        details: "",
-                        rawValue: yieldDiplomacy,
-                        warningThreshold: Infinity
-                    },
-                    {
                         type: RibbonYieldType.Science,
                         label: Locale.compose("LOC_YIELD_SCIENCE"),
                         value: formatYieldValue(yieldScience),
@@ -267,6 +232,24 @@ engine.whenReady.then(() => {
                         details: "",
                         rawValue: yieldHappiness,
                         warningThreshold: Infinity
+                    },
+                    {
+                        type: RibbonYieldType.Diplomacy,
+                        label: Locale.compose("LOC_YIELD_DIPLOMACY"),
+                        value: formatYieldValue(yieldDiplomacy),
+                        img: this.getImg('YIELD_DIPLOMACY', isLocal),
+                        details: "",
+                        rawValue: yieldDiplomacy,
+                        warningThreshold: Infinity
+                    },
+                    {
+                        type: RibbonYieldType.Trade,
+                        label: Locale.compose("LOC_YIELD_MAX_TRADE"),
+                        value: tradeInfo ? (tradeInfo.currentTradesWithCiv + "/" + tradeInfo.maxTradeLimitWithCiv) : "0/0",
+                        img: this.getImg('YIELD_TRADES', isLocal),
+                        details: "",
+                        rawValue: tradeInfo?.currentTradesWithCiv ?? 0,
+                        warningThreshold: tradeInfo?.maxTradeLimitWithCiv ?? 0
                     },
                     {
                         type: RibbonYieldType.Settlements,
@@ -312,18 +295,9 @@ engine.whenReady.then(() => {
                         details: "",
                         rawValue: militaryPower,
                         warningThreshold: Infinity
-                    },
-                    {
-                        type: RibbonYieldType.TradeRoutes,
-                        label: Locale.compose("LOC_YIELD_TRADE_ROUTES"),
-                        value: tradeRoutes.displayText,
-                        img: this.getImg('YIELD_TRADES', isLocal),
-                        details: "",
-                        rawValue: tradeRoutes.current,
-                        warningThreshold: tradeRoutes.max
                     }
                 ];
-            
+
                 // Store in cache
                 yieldDataCache.set(cacheKey, yieldData);
                 
@@ -334,7 +308,6 @@ engine.whenReady.then(() => {
             engine.on('PlayerTurnActivated', () => {
                 militaryPowerCache.clear();
                 yieldDataCache.clear();
-                tradeRouteCache.clear();
                 console.log("Enhanced Diplomacy Banners: Cache cleared for new turn");
             });
             

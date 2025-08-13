@@ -40,7 +40,8 @@ export const HOVER_ALL_STYLES = `
     .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(7),
     .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(8),
     .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(9),
-    .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(10) {
+    .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(10),
+    .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(11) {
         display: flex !important;
         opacity: 1 !important;
         max-height: 2rem !important;
@@ -71,6 +72,10 @@ export const HOVER_ALL_STYLES = `
     }
 
     .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(10) {
+        transition-delay: 0.2s !important;
+    }
+
+    .diplo-ribbon .diplo-ribbon-outer.hover-all .diplo-ribbon__yields > *:nth-child(11) {
         transition-delay: 0.2s !important;
     }
     

@@ -10,7 +10,8 @@ export const ALWAYS_SHOW_EXTENDED_YIELDS_STYLES = `
     .diplo-ribbon .diplo-ribbon__yields > *:nth-child(7),
     .diplo-ribbon .diplo-ribbon__yields > *:nth-child(8),
     .diplo-ribbon .diplo-ribbon__yields > *:nth-child(9),
-    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(10) {
+    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(10),
+    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(11) {
         display: flex !important;
         opacity: 1 !important;
         max-height: 2rem !important;
@@ -42,7 +43,8 @@ export const SHOW_EXTENDED_YIELDS_ON_HOVER_STYLES = `
     .diplo-ribbon .diplo-ribbon__yields > *:nth-child(7),
     .diplo-ribbon .diplo-ribbon__yields > *:nth-child(8),
     .diplo-ribbon .diplo-ribbon__yields > *:nth-child(9),
-    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(10) {
+    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(10),
+    .diplo-ribbon .diplo-ribbon__yields > *:nth-child(11) {
         display: block !important;
         opacity: 0 !important;
         max-height: 0 !important;
@@ -60,7 +62,8 @@ export const SHOW_EXTENDED_YIELDS_ON_HOVER_STYLES = `
     .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(7),
     .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(8),
     .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(9),
-    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(10) {
+    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(10),
+    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(11) {
         display: flex !important;
         opacity: 1 !important;
         max-height: 2rem !important;
@@ -92,6 +95,10 @@ export const SHOW_EXTENDED_YIELDS_ON_HOVER_STYLES = `
 
     .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(10) {
         transition-delay: 0.15s !important;
+    }
+
+    .diplo-ribbon .diplo-ribbon-outer:hover .diplo-ribbon__yields > *:nth-child(11) {
+        transition-delay: 0.2s !important;
     }
 
     /* Add separator on hover after the 5th yield element */
